@@ -3,7 +3,7 @@
   $id=intval(getInput("id"));
   $idDelete = $db->delete("category", $id);
   if ($idDelete>0) {
-    $_SESSION["success"]="Delete category successfully";
+    $_SESSION["success"]="<i class='fas fa-trash'></i>Delete category successfully";
     redirectCate("category");
   }
   else{
