@@ -26,7 +26,7 @@
     if (empty($error)) {
       $idInsert = $db->insert("category", $data);
       if ($idInsert>0) {
-        $_SESSION["success"]="Add category successfully";
+        $_SESSION["success"]="<i class='fas fa-plus'></i> Add category successfully";
         redirectCate("category");
       }
       else{

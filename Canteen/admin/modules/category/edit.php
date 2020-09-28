@@ -26,7 +26,7 @@
     if (empty($error)) {
       $idUpdate = $db->update("category", $data, array("id"=>$id));
       if ($idUpdate>0) {
-        $_SESSION["success"]="Edit category successfully";
+        $_SESSION["success"]="<i class='fas fa-edit'></i> Edit category successfully";
         redirectCate("category");
       }
       else{
