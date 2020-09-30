@@ -1,5 +1,5 @@
 <?php
-  $open="manageitem";
+  $open="manageaccount";
   require_once __dir__. "/../../autoload/autoload.php";
   if (isset($_GET['page'])) {
     $p=$_GET['page'];

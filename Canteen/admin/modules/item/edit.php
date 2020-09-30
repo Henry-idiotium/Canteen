@@ -2,6 +2,7 @@
   $open="manageitem";
   require_once __dir__. "/../../autoload/autoload.php";
   $category=$db->fetchAll("tblcategory");
+  $status=$db->fetchAll("tblstatus");
   $id=intval(getInput("id"));
   $edititem=$db->fetchID("tblitem", "itemId", $id);
   if (empty($edititem)) {
@@ -23,6 +24,7 @@
       "slug"=>slugify(postInput("name")),
       "price"=>postInput("price"),
       "categoryId"=>postInput("categoryId"),
+      "statusId"=>postInput("statusId"),
       "description"=>postInput("description")
     ];
 
@@ -32,7 +34,10 @@
       $error["name"]="Please enter a name";
     }
     if (postInput("categoryId")=="") {
-      $error["categoryId"]="Please enter choose a category";
+      $error["categoryId"]="Please choose a category";
+    }
+    if (postInput("statusId")=="") {
+      $error["statusId"]="Please choose a status";
     }
     if (postInput("price")=="") {
       $error["price"]="Please enter the item price";
@@ -52,19 +57,20 @@
         $file_erro=$_FILES["image"]["error"];
       }
 
-      if ($file_error==0) {
+      if ($file_erro==0) {
         $part=ROOT."product/";
         $data["image"]=$file_name;
       }
 
-      $id_insert=$db->insert("tblitem", $data);
-      if ($id_insert) {
+      $idUpdate = $db->update("tblitem", $data, array("itemId"=>$id));
+      if ($idUpdate>0) {
         move_uploaded_file($file_tmp,$part.$file_name);
-        $_SESSION["success"]="Add successfully";
+        $_SESSION["success"]="Update successfully";
         redirectCate("item");
       }
       else {
-        $_SESSION["error"]="Add failed";
+        $_SESSION["error"]="Update canceled";
+        redirectCate("item");
       }
     }
   }
@@ -90,7 +96,7 @@
                           <div class="form-group row mr-auto ml-auto justify-content-center">
                             <label for="inputItemCategory" class="col-sm-2 col-form-label">Category</label>
                             <div class="col-sm-8">
-                              <select class="form-control" name="categoryId">                              
+                              <select class="form-control" name="categoryId">
                                 <?php foreach ($category as $item): ?>
                                   <option value="<?php echo $item["categoryId"]; ?>" <?php echo $edititem["categoryId"]==$item["categoryId"] ? "selected='selected' " : ""; ?>><?php echo $item["name"]; ?></option>
                                 <?php endforeach ?>
@@ -119,6 +125,19 @@
                             </div>
                           </div>
                           <div class="form-group row mr-auto ml-auto justify-content-center">
+                            <label for="inputItemCategory" class="col-sm-2 col-form-label">Status</label>
+                            <div class="col-sm-8">
+                              <select class="form-control" name="statusId">
+                                <?php foreach ($status as $item): ?>
+                                  <option value="<?php echo $item["statusId"]; ?>" <?php echo $edititem["statusId"]==$item["statusId"] ? "selected='selected' " : ""; ?>><?php echo $item["name"]; ?></option>
+                                <?php endforeach ?>
+                              </select>
+                              <?php if (isset($error["statusId"])): ?>
+                                <p class="text-danger ">&nbsp <?php echo $error["statusId"]; ?></p>
+                              <?php endif ?>
+                            </div>
+                          </div>
+                          <div class="form-group row mr-auto ml-auto justify-content-center">
                             <label for="inputItemSale" class="col-sm-2 col-form-label">Sale</label>
                             <div class="col-sm-4">
                               <input type="number" class="form-control" id="inputItemSale" name="sale" placeholder="10%" value="<?php echo $edititem["sale"] ?>">
@@ -132,7 +151,7 @@
                               <?php if (isset($error["image"])): ?>
                                 <p class="text-danger ">&nbsp <?php echo $error["image"]; ?></p>
                               <?php endif ?>
-                              <img src="<img src="<?php echo uploads().$edititem['image']; ?>" width="50px" height="50px"" alt="">
+                              <img src="<?php echo uploads().$edititem['image']; ?>" width="200px" height="200px" alt="">
                             </div>
                             <div class="col-sm-4"></div>
                           </div>
@@ -148,7 +167,7 @@
                           <div class="form-group row mr-auto ml-auto">
                             <label for="inputCategoryDes" class="col-sm-2 col-form-label"></label>
                             <div class="col-sm-10">
-                              <button type="submit" class="btn btn-primary mr-auto ml-auto d-block"><i class="fas fa-plus fa-sm text-white-50"></i> Add</button>
+                              <button type="submit" class="btn btn-primary mr-auto ml-auto d-block"><i class="fas fa-edit fa-sm text-white-50"></i> Edit</button>
                             </div>
                           </div>
                         </form>

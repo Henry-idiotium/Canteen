@@ -2,6 +2,7 @@
   $open="manageitem";
   require_once __dir__. "/../../autoload/autoload.php";
   $category=$db->fetchAll("tblcategory");
+  $status=$db->fetchAll("tblstatus");
   if ($_SERVER["REQUEST_METHOD"]=="POST") {
     // if(isset($_POST["name"]) && $_POST["name"]!=NULL)
     // {
@@ -17,6 +18,7 @@
       "slug"=>slugify(postInput("name")),
       "price"=>postInput("price"),
       "categoryId"=>postInput("categoryId"),
+      "statusId"=>postInput("statusId"),
       "description"=>postInput("description")
     ];
 
@@ -26,7 +28,10 @@
       $error["name"]="Please enter a name";
     }
     if (postInput("categoryId")=="") {
-      $error["categoryId"]="Please enter choose a category";
+      $error["categoryId"]="Please choose a category";
+    }
+    if (postInput("statusId")=="") {
+      $error["statusId"]="Please choose a status";
     }
     if (postInput("price")=="") {
       $error["price"]="Please enter the item price";
@@ -46,13 +51,13 @@
         $file_erro=$_FILES["image"]["error"];
       }
 
-      if ($file_error==0) {
+      if ($file_erro==0) {
         $part=ROOT."product/";
         $data["image"]=$file_name;
       }
 
-      $id_insert=$db->insert("tblitem", $data);
-      if ($id_insert) {
+      $idInsert=$db->insert("tblitem", $data);
+      if ($idInsert) {
         move_uploaded_file($file_tmp,$part.$file_name);
         $_SESSION["success"]="Add successfully";
         redirectCate("item");
@@ -101,6 +106,20 @@
                               <input type="text" class="form-control" id="inputItemName" name="name" placeholder="Item name">
                               <?php if (isset($error["name"])): ?>
                                 <p class="text-danger ">&nbsp <?php echo $error["name"]; ?></p>
+                              <?php endif ?>
+                            </div>
+                          </div>
+                          <div class="form-group row mr-auto ml-auto justify-content-center">
+                            <label for="inputItemCategory" class="col-sm-2 col-form-label">Status</label>
+                            <div class="col-sm-8">
+                              <select class="form-control" name="statusId">
+                                <option value="">Please choose a status</option>
+                                <?php foreach ($status as $item): ?>
+                                  <option value="<?php echo $item["statusId"]; ?>"><?php echo $item["name"]; ?></option>
+                                <?php endforeach ?>
+                              </select>
+                              <?php if (isset($error["statusId"])): ?>
+                                <p class="text-danger ">&nbsp <?php echo $error["statusId"]; ?></p>
                               <?php endif ?>
                             </div>
                           </div>
