@@ -23,18 +23,36 @@
       $error["name"]="Please enter a category name";
     }
 
-    if (empty($error)) {
+    if ($data["name"] != $editCategory["name"]) {
+      if (empty($error)) {
+        $isset=$db->fetchOne("category", " name= '".$data["name"]."' ");
+        if (count($isset)>0) {
+          $_SESSION["error"]="The category has already existed";
+        }
+        else {
+          $idUpdate = $db->update("category", $data, array("id"=>$id));
+          if ($idUpdate>0) {
+            $_SESSION["success"]="<i class='fas fa-edit'></i> Edit category successfully";
+            redirectCate("category");
+          }
+          else{
+            $_SESSION["error"]="Edit cancel-nothing changes";
+            redirectCate("category");
+          }
+        }
+      }
+    }
+    else {
       $idUpdate = $db->update("category", $data, array("id"=>$id));
       if ($idUpdate>0) {
         $_SESSION["success"]="<i class='fas fa-edit'></i> Edit category successfully";
         redirectCate("category");
       }
       else{
-        $_SESSION["error"]="Edit failed";
+        $_SESSION["error"]="Edit cancel-nothing changes";
+        redirectCate("category");
       }
     }
-
-
   }
 
 ?>
@@ -49,8 +67,9 @@
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item"><a href="index.html">Manage item</a></li>
                             <li class="breadcrumb-item"><a href="index.php">Category</a></li>
-                            <li class="breadcrumb-item active">Add</li>
+                            <li class="breadcrumb-item active">Edit</li>
                         </ol>
+                        <?php require_once __dir__. "/../../../partials/notification.php"; ?>
                         <!-- Content Row -->
                         <!-- DataTales Example -->
                         <form action="" method="POST" class="form-horizontal">

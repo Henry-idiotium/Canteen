@@ -10,7 +10,7 @@
                         <!-- Page Heading -->
                         <div class="d-sm-flex align-items-center justify-content-between mb-4">
                             <h1 class="h3 mb-0 text-gray-800">Category</h1>
-                            <a href="add.php" class="d-none d-sm-inline-block btn btn-mds btn-success shadow-sm"><i class="fas fa-plus fa-sm text-white-50"></i> ADD ITEM</a>
+                            <a href="add.php" class="d-none d-sm-inline-block btn btn-mds btn-success shadow-sm"><i class="fas fa-plus fa-sm text-white-50"></i> ADD CATEGORY</a>
                         </div>
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item"><a href="../../index.php">Menu</a></li>
@@ -19,18 +19,7 @@
                         </ol>
                         <div class="clearfix"></div>
                         <!-- notification -->
-                        <?php if (isset($_SESSION["success"])):  ?>
-                          <div class="alert alert-success" role="alert">
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <?php echo $_SESSION["success"]; unset($_SESSION["success"]); ?>
-                          </div>
-                        <?php endif; ?>
-                        <?php if (isset($_SESSION["error"])):  ?>
-                          <div class="alert alert-danger" role="alert">
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <?php echo $_SESSION["error"]; unset($_SESSION["error"]); ?>
-                          </div>
-                        <?php endif; ?>
+                          <?php require_once __dir__. "/../../../partials/notification.php"; ?>
                         <!-- Content Row -->
                         <!-- DataTales Example -->
                         <div class="card shadow mb-4">

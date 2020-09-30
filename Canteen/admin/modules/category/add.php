@@ -24,14 +24,23 @@
     }
 
     if (empty($error)) {
-      $idInsert = $db->insert("category", $data);
-      if ($idInsert>0) {
-        $_SESSION["success"]="<i class='fas fa-plus'></i> Add category successfully";
-        redirectCate("category");
+
+      $isset=$db->fetchOne("category", " name= '".$data["name"]."' ");
+      if (count($isset)>0) {
+        $_SESSION["error"]="The category has already existed";
       }
-      else{
-        $_SESSION["error"]="Add failed";
+      else {
+        $idInsert = $db->insert("category", $data);
+        if ($idInsert>0) {
+          $_SESSION["success"]="<i class='fas fa-plus'></i> Add category successfully";
+          redirectCate("category");
+        }
+        else{
+          $_SESSION["error"]="Add failed";
+          redirectCate("category");
+        }
       }
+
     }
   }
 
@@ -49,6 +58,8 @@
                             <li class="breadcrumb-item"><a href="index.php">Category</a></li>
                             <li class="breadcrumb-item active">Add</li>
                         </ol>
+                        <div class="clearfix"></div>
+                        <?php require_once __dir__. "/../../../partials/notification.php"; ?>
                         <!-- Content Row -->
                         <!-- DataTales Example -->
                         <form action="" method="POST" class="form-horizontal">
