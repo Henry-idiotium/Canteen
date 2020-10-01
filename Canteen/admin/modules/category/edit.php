@@ -6,7 +6,7 @@
 
   $editCategory=$db->fetchID("tblcategory", "categoryId", $id);
   if (empty($editCategory)) {
-    $_SESSION["error"]="Data is not exist"
+    $_SESSION["error"]="Data is not exist";
     redirectCate("category");
   }
   if ($_SERVER["REQUEST_METHOD"]=="POST") {

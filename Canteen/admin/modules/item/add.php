@@ -57,7 +57,7 @@
       }
 
       $idInsert=$db->insert("tblitem", $data);
-      if ($idInsert) {
+      if (isset($idInsert)) {
         move_uploaded_file($file_tmp,$part.$file_name);
         $_SESSION["success"]="Add successfully";
         redirectCate("item");

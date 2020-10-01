@@ -1,5 +1,5 @@
 <?php
-  $open="manageitem";
+  $open="manageaccount";
   require_once __dir__. "/../../autoload/autoload.php";
   $role=$db->fetchAll("tblrole");
   $data =
@@ -52,6 +52,12 @@
     if (postInput("email")=="") {
       $error["email"]="Please fill out this form completely";
     }
+    else {
+      $isCheck=$db->fetchOne("tbluser", " email='".$data["email"]."' ");
+      if ($isCheck!=NULL) {
+        $error["email"]="Email has been existed, please choose another one";
+      }
+    }
     if (postInput("address")=="") {
       $error["address"]="Please fill out this form completely";
     }
@@ -70,7 +76,7 @@
 
 
       $idInsert=$db->insert("tbluser", $data);
-      if ($idInsert) {
+      if (isset($idInsert)) {
         $_SESSION["success"]="Add successfully";
         redirectCate("user");
       }
@@ -140,7 +146,7 @@
                               <select class="form-control" name="roleId">
                                 <option value="">Please choose a role</option>
                                 <?php foreach ($role as $item): ?>
-                                  <option value="<?php echo $item["roleId"]; ?>"><?php echo $item["name"]."-".$item["description"]; ?></option>
+                                  <option value="<?php echo $item["roleId"]; ?>" <?php echo isset($data["roleId"]) && $data["roleId"]==$item["roleId"]? "selected='selected'":"" ?>><?php echo $item["name"]."-".$item["description"]; ?></option>
                                 <?php endforeach ?>
                               </select>
                               <?php if (isset($error["roleId"])): ?>
@@ -152,6 +158,9 @@
                             <label for="inputItemName" class="col-sm-2 col-form-label">Email</label>
                             <div class="col-sm-8">
                               <input type="email" value="<?php echo $data["email"] ?>" class="form-control" id="inputItemName" name="email" placeholder="Email-Not required">
+                              <?php if (isset($error["email"])): ?>
+                                <p class="text-danger ">&nbsp <?php echo $error["email"]; ?></p>
+                              <?php endif ?>
                             </div>
                           </div>
                           <div class="form-group row mr-auto ml-auto justify-content-center">
