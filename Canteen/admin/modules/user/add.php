@@ -40,6 +40,12 @@
     if (postInput("username")=="") {
       $error["username"]="Please fill out this form completely";
     }
+    else {
+      $isChecku=$db->fetchOne("tbluser", " username='".$data["username"]."' ");
+      if ($isChecku!=NULL) {
+        $error["username"]="Username has been existed, please choose another one";
+      }
+    }
     if (postInput("fullname")=="") {
       $error["fullname"]="Please fill out this form completely";
     }
@@ -63,6 +69,12 @@
     }
     if (postInput("identityNo")=="") {
       $error["identityNo"]="Please fill out this form completely";
+    }
+    else {
+      $isChecki=$db->fetchOne("tbluser", " identityNo='".$data["identityNo"]."' ");
+      if ($isChecki!=NULL) {
+        $error["identityNo"]="Identity number has been existed, please choose another one";
+      }
     }
     if (postInput("password")=="") {
       $error["password"]="Please fill out this form completely";
