@@ -1,5 +1,4 @@
 <?php
-
     $open="manageaccount";
     require_once __dir__. "/../../autoload/autoload.php";
     $id=strval(getInput("name"));
@@ -31,73 +30,53 @@
             "address"=>postInput("address"),
             "identityNo"=>postInput("identityNo"),
             "password"=>MD5(postInput("password"))
-
         ];
 
         $error = [];
 
         if (postInput("username")=="") {
             $error["username"]="Please fill out this form completely";
-        }
-        else {
+            }
+            else {
             if ($editAdmin["username"] != postInput("username")) {
                 $isChecku=$db->fetchOne("tbluser", " username='".$data["username"]."' ");
                 if ($isChecku!=NULL) {
-                $error["username"]="Username has been existed, please choose another one";
+                    $error["username"]="Username has been existed, please choose another one";
                 }
             }
         }
 
-        if (postInput("fullname")=="") {
-            $error["fullname"]="Please fill out this form completely";
-        }
-        if (postInput("roleId")=="") {
-            $error["roleId"]="Please fill out this form completely";
-        }
-        if (postInput("phone")=="") {
-            $error["phone"]="Please fill out this form completely";
-        }
-        if (postInput("email")=="") {
-            $error["email"]="Please fill out this form completely";
-        }
+        if (postInput("fullname")=="") $error["fullname"]="Please fill out this form completely";
+        if (postInput("roleId")=="") $error["roleId"]="Please fill out this form completely";
+        if (postInput("phone")=="") $error["phone"]="Please fill out this form completely";
+
+        if (postInput("email")=="") $error["email"]="Please fill out this form completely";
         else {
             if ($editAdmin["email"] != postInput("email")) {
                 $isCheck=$db->fetchOne("tbluser", " email='".$data["email"]."' ");
-                if ($isCheck!=NULL) {
-                $error["email"]="Email has been existed, please choose another one";
-                }
+                if ($isCheck!=NULL) { $error["email"]="Email has been existed, please choose another one"; }
             }
         }
-        if (postInput("address")=="") {
-            $error["address"]="Please fill out this form completely";
-        }
-        if (postInput("identityNo")=="") {
-            $error["identityNo"]="Please fill out this form completely";
-        }
+
+        if (postInput("address")=="") $error["address"]="Please fill out this form completely";
+
+        if (postInput("identityNo")=="") $error["identityNo"]="Please fill out this form completely";
         else {
             if ($editAdmin["identityNo"] != postInput("identityNo")) {
                 $isChecki=$db->fetchOne("tbluser", " identityNo='".$data["identityNo"]."' ");
-                if ($isChecki!=NULL) {
-                $error["identityNo"]="Identity number has been existed, please choose another one";
-                }
+                if ($isChecki!=NULL) $error["identityNo"]="Identity number has been existed, please choose another one";
             }
         }
-
-
+ 
         if ($editAdmin["password"]==MD5(postInput("curpassword"))) {
             if (postInput("password")!=NULL && postInput("repassword")!=NULL) {
-                if (postInput("password") != postInput("repassword")) {
-                $error["password"]="Password is not match";
-                }
+                if (postInput("password") != postInput("repassword")) $error["password"]="Password is not match";
                 else {
-                $data["password"]=MD5(postInput("password"));
+                    $data["password"]=MD5(postInput("password"));
                 }
             }
         }
-        else {
-            $error["curpassword"]="Current password is not match";
-        }
-
+        else $error["curpassword"]="Current password is not match";
 
         if (empty($error)) {
             $idUpdate=$db->update("tbluser", $data, array("username"=>$id));
@@ -113,9 +92,7 @@
     }
 
 ?>
-
 <?php require_once __dir__. "/../../layouts/header.php"; ?>
-
     <!-- Begin Page Content -->
     <div class="container-fluid">
         <!-- Page Heading -->

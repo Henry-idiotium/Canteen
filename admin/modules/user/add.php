@@ -1,4 +1,5 @@
 <?php
+
     $open="manageaccount";
     require_once __dir__. "/../../autoload/autoload.php";
     $role=$db->fetchAll("tblrole");
@@ -13,6 +14,7 @@
         "identityNo"=>"",
         "password"=>""
     ];
+
     if ($_SERVER["REQUEST_METHOD"]=="POST") {
         // if(isset($_POST["name"]) && $_POST["name"]!=NULL)
         // {
@@ -32,56 +34,43 @@
             "address"=>postInput("address"),
             "identityNo"=>postInput("identityNo"),
             "password"=>MD5(postInput("password"))
-
         ];
 
         $error = [];
 
-        if (postInput("username")=="") {
-            $error["username"]="Please fill out this form completely";
-        }
+        if (postInput("username")=="") $error["username"]="Please fill out this form completely";
         else {
             $isChecku=$db->fetchOne("tbluser", " username='".$data["username"]."' ");
             if ($isChecku!=NULL) {
                 $error["username"]="Username has been existed, please choose another one";
             }
         }
-        if (postInput("fullname")=="") {
-            $error["fullname"]="Please fill out this form completely";
-        }
-        if (postInput("roleId")=="") {
-            $error["roleId"]="Please fill out this form completely";
-        }
-        if (postInput("phone")=="") {
-            $error["phone"]="Please fill out this form completely";
-        }
-        if (postInput("email")=="") {
-            $error["email"]="Please fill out this form completely";
-        }
+
+        if (postInput("fullname")=="") $error["fullname"]="Please fill out this form completely";
+        if (postInput("roleId")=="") $error["roleId"]="Please fill out this form completely";
+        if (postInput("phone")=="") $error["phone"]="Please fill out this form completely";
+        
+        if (postInput("email")=="") $error["email"]="Please fill out this form completely";
         else {
             $isCheck=$db->fetchOne("tbluser", " email='".$data["email"]."' ");
             if ($isCheck!=NULL) {
                 $error["email"]="Email has been existed, please choose another one";
             }
         }
-        if (postInput("address")=="") {
-            $error["address"]="Please fill out this form completely";
-        }
-        if (postInput("identityNo")=="") {
-            $error["identityNo"]="Please fill out this form completely";
-        }
+        
+        if (postInput("address")=="") $error["address"]="Please fill out this form completely";
+
+        if (postInput("identityNo")=="") $error["identityNo"]="Please fill out this form completely";
         else {
             $isChecki=$db->fetchOne("tbluser", " identityNo='".$data["identityNo"]."' ");
             if ($isChecki!=NULL) {
                 $error["identityNo"]="Identity number has been existed, please choose another one";
             }
         }
-        if (postInput("password")=="") {
-            $error["password"]="Please fill out this form completely";
-        }
-        if ($data["password"]!=MD5(postInput("repassword"))) {
-            $error["repassword"]="Password is not match";
-        }
+
+        if (postInput("password")=="") $error["password"]="Please fill out this form completely";
+        if ($data["password"]!=MD5(postInput("repassword"))) $error["repassword"]="Password is not match";
+
 
         if (empty($error)) {
             $idInsert=$db->insert("tbluser", $data);
@@ -89,13 +78,12 @@
                 $_SESSION["success"]="Add successfully";
                 redirectCate("user");
             }
-            else {
-                $_SESSION["error"]="Add failed";
-            }
+            else $_SESSION["error"]="Add failed";
         }
     }
 
 ?>
+
 <?php require_once __dir__. "/../../layouts/header.php"; ?>
 
     <!-- Begin Page Content -->
@@ -154,17 +142,17 @@
                 <label for="inputItemName" class="col-sm-2 col-form-label">Role</label>
                 <div class="col-sm-8">
                     <select class="form-control" name="roleId">
-                        <option value="">Please choose a role</option>
-                        <?php foreach ($role as $item): ?>
+                    <option value="">Please choose a role</option>
+                    <?php foreach ($role as $item): ?>
                         <option value="<?php echo $item["roleId"]; ?>" <?php echo isset($data["roleId"]) && $data["roleId"]==$item["roleId"]? "selected='selected'":"" ?>><?php echo $item["name"]."-".$item["description"]; ?></option>
-                        <?php endforeach ?>
+                    <?php endforeach ?>
                     </select>
                     <?php if (isset($error["roleId"])): ?>
                     <p class="text-danger ">&nbsp <?php echo $error["roleId"]; ?></p>
                     <?php endif ?>
                 </div>
             </div>
-            <div class="form-group row mr-auto ml-auto justify-content-center">
+                <div class="form-group row mr-auto ml-auto justify-content-center">
                 <label for="inputItemName" class="col-sm-2 col-form-label">Email</label>
                 <div class="col-sm-8">
                     <input type="email" value="<?php echo $data["email"] ?>" class="form-control" id="inputItemName" name="email" placeholder="Email-Not required">

@@ -7,12 +7,12 @@
     else{
         $p=1;
     }
-    $sql="SELECT tblitem.*, tblcategory.name as namecate, tblstatus.name as namestatus FROM tblitem LEFT JOIN tblcategory on tblitem.categoryId=tblcategory.categoryId LEFT JOIN tblstatus on tblitem.statusId=tblstatus.statusId";
-    $product=$db->fetchJone("tblitem", $sql, $p, 2, true, "itemId");
-    $pageMax=$product["page"];
-    if (isset($product['page'])) {
-        $pageNo=$product['page'];
-        unset($product['page']);
+    $sql="SELECT tbluser.*, tblrole.name as namerole FROM tbluser LEFT JOIN tblrole on tbluser.roleId=tblrole.roleId ORDER BY createAt DESC ";
+    $user=$db->fetchJone("tbluser", $sql, $p, 2, true, "username");
+    $pageMax=$user["page"];
+    if (isset($user['page'])) {
+        $pageNo=$user['page'];
+        unset($user['page']);
     }
 ?>
 <?php require_once __dir__. "/../../layouts/header.php"; ?>
@@ -39,56 +39,53 @@
             <h6 class="m-0 font-weight-bold text-primary">Category listboard</h6>
             </div>
             <div class="card-body">
-                <div class="table-responsive">
-                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                        <thead>
-                            <tr>
-                            <th>Number</th>
-                            <th>Name</th>
-                            <th>Category</th>
-                            <th>Status</th>
-                            <th>Slug</th>
-                            <th>Image</th>
-                            <th>Create at</th>
-                            <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tfoot>
-                            <tr>
-                            <th>Number</th>
-                            <th>Name</th>
-                            <th>Category</th>
-                            <th>Status</th>
-                            <th>Slug</th>
-                            <th>Image</th>
-                            <th>Create at</th>
-                            <th>Action</th>
-                            </tr>
-                        </tfoot>
-                        <tbody>
-                            <?php $num=1; foreach ($product as $item): ?>
-                            <tr>
-                                <td><?php echo $num ?></td>
-                                <td><?php echo $item["name"] ?></td>
-                                <td><?php echo $item["namecate"] ?></td>
-                                <td><?php echo $item["namestatus"] ?></td>
-                                <td><?php echo $item["slug"] ?></td>
-                                <td><img src="<?php echo uploads().$item['image']; ?>" width="160px" height="200px"></td>
-                                <td><?php echo $item["createAt"] ?></td>
-                                <td>
-                                <a class="btn btn-xs btn-info" href="edit.php?id=<?php echo $item["itemId"]; ?>"><i class="fas fa-edit"></i> Edit</a>
-                                <a class="btn btn-xs btn-info" href="delete.php?id=<?php echo $item["itemId"]; ?>"><i class="fas fa-trash"></i> Delete</a>
-                                </td>
-                            </tr>
-                            <?php $num++; endforeach ?>
-                        </tbody>
-                    </table>
-                </div>
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                    <th>Number</th>
+                    <th>Username</th>
+                    <th>Fullname</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Role</th>
+                    <th>Action</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                    <th>Number</th>
+                    <th>Username</th>
+                    <th>Fullname</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Role</th>
+                    <th>Action</th>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    <?php $num=1; foreach ($user as $item): ?>
+                    <tr>
+                        <td><?php echo $num ?></td>
+                        <td><?php echo $item["username"] ?></td>
+                        <td><?php echo $item["fullname"] ?></td>
+                        <td><?php echo $item["email"] ?></td>
+                        <td><?php echo $item["phone"] ?></td>
+                        <td><?php echo $item["namerole"] ?></td>
+                        <td>
+                        <a class="btn btn-xs btn-info" href="edit.php?name=<?php echo $item["username"]; ?>"><i class="fas fa-edit"></i> Edit</a>
+                        <a class="btn btn-xs btn-info" href="delete.php?name=<?php echo $item["username"]; ?>"><i class="fas fa-trash"></i> Delete</a>
+                        </td>
+                    </tr>
+                    <?php $num++; endforeach ?>
+                </tbody>
+                </table>
+            </div>
             </div>
         </div>
         <ul class="pagination">
             <li class="paginate_button page-item previous <?php echo isset($p) && $p==1 ? "disabled" : "" ?>" id="dtBasicExample_previous">
-                <a href="/Canteen/admin/modules/item/?page=<?php echo $p-1; ?>" aria-controls="dtBasicExample" data-dt-idx="0" tabindex="0" class="page-link">Previous</a>
+            <a href="/Canteen/admin/modules/item/?page=<?php echo $p-1; ?>" aria-controls="dtBasicExample" data-dt-idx="0" tabindex="0" class="page-link">Previous</a>
             </li>
             <?php $NoP=1; for ($i=0; $i < $pageMax  ; $i++): ?>
             <li class="paginate_button page-item <?php echo isset($p) && $p==$NoP ? "active" : "" ?>">
@@ -96,10 +93,10 @@
             </li>
             <?php $NoP++; endfor?>
             <li class="paginate_button page-item next <?php echo isset($p) && $p==$pageMax ? "disabled" : "" ?>" id="dtBasicExample_next">
-                <a href="/Canteen/admin/modules/item/?page=<?php echo $p+1; ?>" aria-controls="dtBasicExample" data-dt-idx="7" tabindex="0" class="page-link">Next</a>
+            <a href="/Canteen/admin/modules/item/?page=<?php echo $p+1; ?>" aria-controls="dtBasicExample" data-dt-idx="7" tabindex="0" class="page-link">Next</a>
             </li>
         </ul>
+        <!-- End of Main Content -->
     </div>
-    <!-- End of Main Content -->
 
 <?php require_once __dir__. "/../../layouts/footer.php"; ?>
