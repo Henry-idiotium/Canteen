@@ -1,7 +1,6 @@
 
                 </div>
                 <!-- End of Content -->
-                
             </div>
             <!-- End of Content Wrapper -->
             <!-- Scroll to Top Button-->
@@ -43,6 +42,7 @@
             <script src="<?php echo base_url() ?>public/admin/js/myjs.js"></script>
         </div>
         <!-- End of Page Wrapper -->
+        
         <!-- Footer -->
         <footer class="sticky-footer bg-dark">
             <div class="container">
