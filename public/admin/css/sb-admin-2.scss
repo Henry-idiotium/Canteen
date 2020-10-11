@@ -11240,19 +11240,3 @@ footer.sticky-footer .copyright {
 body.sidebar-toggled footer.sticky-footer {
   width: 100%;
 }
-
-ul {
-  list-style: none;
-  padding: 0;
-}
-li {
-  padding-left: 1.3em;
-  @extend %fa-icon;
-  @extend .fab;
-  &:before {
-    content: fa-content($fa-var-twitter); 
-    display: inline-block;
-    margin-left: -1.3em; 
-    width: 1.3em;
-  }
-}
