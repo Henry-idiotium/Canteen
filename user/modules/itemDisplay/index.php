@@ -1,6 +1,10 @@
-<?php 
+<?php
 
     // Truong's part
+
+
+        require_once __dir__. "/../../autoload/autoload.php";
+
 
 ?>
 
