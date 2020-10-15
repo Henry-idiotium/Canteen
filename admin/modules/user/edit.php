@@ -1,13 +1,23 @@
 <?php
     $open="manageaccount";
     require_once __dir__. "/../../autoload/autoload.php";
+    if ($_GET['editre']==1) {
+      $editre="/showadmin.php";
+    }
+    if ($_GET['editre']==2) {
+      $editre="/showcaterer.php";
+    }
+    if ($_GET['editre']==3) {
+      $editre="/showuser.php";
+    }
     $id=strval(getInput("name"));
     $role=$db->fetchAll("tblrole");
+    $department=$db->fetchAll("tbldepartment");
     $editAdmin=$db->fetchID("tbluser", 'username', "'".$id."'");
 
     if (empty($editAdmin)) {
         $_SESSION["error"]="Data is not exist";
-        redirectCate("user");
+        redirectCate("user".$editre);
     }
 
     $role=$db->fetchAll("tblrole");
@@ -24,6 +34,7 @@
         [
             "username"=>postInput("username"),
             "fullname"=>postInput("fullname"),
+            "departmentId"=>postInput("departmentId"),
             "roleId"=>postInput("roleId"),
             "phone"=>postInput("phone"),
             "email"=>postInput("email"),
@@ -45,7 +56,9 @@
                 }
             }
         }
-
+        if (postInput("departmentId")=="") {
+            $error["departmentId"]="Please choose a department";
+        }
         if (postInput("fullname")=="") $error["fullname"]="Please fill out this form completely";
         if (postInput("roleId")=="") $error["roleId"]="Please fill out this form completely";
         if (postInput("phone")=="") $error["phone"]="Please fill out this form completely";
@@ -67,7 +80,7 @@
                 if ($isChecki!=NULL) $error["identityNo"]="Identity number has been existed, please choose another one";
             }
         }
- 
+
         if ($editAdmin["password"]==MD5(postInput("curpassword"))) {
             if (postInput("password")!=NULL && postInput("repassword")!=NULL) {
                 if (postInput("password") != postInput("repassword")) $error["password"]="Password is not match";
@@ -82,11 +95,11 @@
             $idUpdate=$db->update("tbluser", $data, array("username"=>$id));
             if ($idUpdate>0) {
                 $_SESSION["success"]="Edit successfully";
-                redirectCate("user");
+                redirectCate("user".$editre);
             }
             else {
                 $_SESSION["error"]="Edit canceled";
-                redirectCate("user");
+                redirectCate("user".$editre);
             }
         }
     }
@@ -151,6 +164,19 @@
                     <input type="text" value="<?php echo $editAdmin["fullname"] ?>" class="form-control" id="inputItemName" name="fullname" placeholder="Fullname">
                     <?php if (isset($error["fullname"])): ?>
                     <p class="text-danger ">&nbsp <?php echo $error["fullname"]; ?></p>
+                    <?php endif ?>
+                </div>
+            </div>
+            <div class="form-group row mr-auto ml-auto justify-content-center">
+                <label for="inputItemCategory" class="col-sm-2 col-form-label">Department</label>
+                <div class="col-sm-8">
+                    <select class="form-control" name="departmentId">
+                        <?php foreach ($department as $item): ?>
+                        <option value="<?php echo $item["departmentId"]; ?>" <?php echo $editAdmin["departmentId"]==$item["departmentId"] ? "selected='selected' " : ""; ?>><?php echo $item["name"]; ?></option>
+                        <?php endforeach ?>
+                    </select>
+                    <?php if (isset($error["categoryId"])): ?>
+                    <p class="text-danger ">&nbsp <?php echo $error["categoryId"]; ?></p>
                     <?php endif ?>
                 </div>
             </div>
