@@ -83,14 +83,13 @@
 <!-- Begin Page Content -->
 <div class="container-fluid">
     <!-- Page Heading -->
-    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Category</h1>
-    </div>
     <ol class="breadcrumb mb-4">
-        <li class="breadcrumb-item"><a href="index.html">Manage item</a></li>
-        <li class="breadcrumb-item"><a href="index.php">Category</a></li>
+        <li class="breadcrumb-item"><a href="index.php">Manage item</a></li>
         <li class="breadcrumb-item active">Edit</li>
     </ol>
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Edit item</h1>
+    </div>
     <?php require_once __dir__. "/../../../partials/notification.php"; ?>
     <!-- Content Row -->
     <!-- DataTales Example -->

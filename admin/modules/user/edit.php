@@ -1,5 +1,6 @@
 <?php
     $open="manageaccount";
+    $editrole=$_GET['editre'];
     require_once __dir__. "/../../autoload/autoload.php";
     if ($_GET['editre']==1) {
       $editre="/showadmin.php";
@@ -106,17 +107,29 @@
 
 ?>
 <?php require_once __dir__. "/../../layouts/header.php"; ?>
-    <!-- Begin Page Content -->
-    <div class="container-fluid">
+      <!-- Begin Page Content -->
+      <div class="container-fluid">
+        <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item"><a href="index.php">Manage item</a></li>
+            <li class="breadcrumb-item">
+              <?php
+                if ($editrole==1) {
+                  echo '<a href="showadmin.php">Admin account</a>';
+                }
+                elseif ($editrole==2) {
+                  echo '<a href="showcaterer.php">Caterer account</a>';
+                }
+                else {
+                  echo '<a href="showuser.php">Client account</a>';
+                }
+               ?>
+            </li>
+            <li class="breadcrumb-item active">Edit account</li>
+        </ol>
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Category</h1>
+            <h1 class="h3 mb-0 text-gray-800">Edit account</h1>
         </div>
-        <ol class="breadcrumb mb-4">
-            <li class="breadcrumb-item"><a href="index.html">Manage item</a></li>
-            <li class="breadcrumb-item"><a href="index.php">Category</a></li>
-            <li class="breadcrumb-item active">Add</li>
-        </ol>
         <div class="clearfix"></div>
         <?php require_once __dir__. "/../../../partials/notification.php"; ?>
         <!-- Content Row -->

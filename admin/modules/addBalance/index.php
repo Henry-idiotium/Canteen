@@ -1,6 +1,6 @@
 <?php
 
-    $open="manageitem";
+    $open="addbalance";
     require_once __dir__. "/../../autoload/autoload.php";
     $department=$db->fetchAll("tbldepartment");
     if (isset($_GET['de'])) {
@@ -31,14 +31,12 @@
     <!-- Begin Page Content -->
     <div class="container-fluid">
         <!-- Page Heading -->
-        <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Category</h1>
-        </div>
         <ol class="breadcrumb mb-4">
-            <li class="breadcrumb-item"><a href="../../index.php">Menu</a></li>
-            <li class="breadcrumb-item"><a href="../../manageItem.php">Manage item</a></li>
-            <li class="breadcrumb-item active">Category</li>
+            <li class="breadcrumb-item">Add balance</li>
         </ol>
+        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">Add balance</h1>
+        </div>
         <div class="clearfix"></div>
         <!-- notification -->
         <?php require_once __dir__. "/../../../partials/notification.php"; ?>

@@ -16,8 +16,7 @@
             <a href="add.php" class="d-none d-sm-inline-block btn btn-mds btn-success shadow-sm"><i class="fas fa-plus fa-sm text-white-50"></i> ADD CATEGORY</a>
         </div>
         <ol class="breadcrumb mb-4">
-            <li class="breadcrumb-item"><a href="../../index.php">Menu</a></li>
-            <li class="breadcrumb-item"><a href="../../manageItem.php">Manage item</a></li>
+            <li class="breadcrumb-item"><a href="../item">Manage item</a></li>
             <li class="breadcrumb-item active">Category</li>
         </ol>
         <div class="clearfix"></div>

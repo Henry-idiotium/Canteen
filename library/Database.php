@@ -98,9 +98,9 @@
             return mysqli_affected_rows($this->link);
 
         }
-        public function countTable($table,$id)
+        public function countTable($table,$id,$role="")
         {
-            $sql = "SELECT $id FROM  {$table}";
+            $sql = "SELECT $id FROM  {$table} ".$role;
             $result = mysqli_query($this->link, $sql) or die("Wrong query ----" .mysqli_error($this->link));
             $num = mysqli_num_rows($result);
             return $num;
@@ -226,14 +226,14 @@
 
             return $data;
         }
-         public  function fetchJone($table,$sql ,$page = 0,$row ,$pagi = false, $id)
+         public  function fetchJone($table,$sql ,$page = 0,$row ,$pagi = false, $id, $role)
         {
 
             $data = [];
             // _debug($sql);die;
             if ($pagi == true )
             {
-                $total = $this->countTable($table, $id);
+                $total = $this->countTable($table, $id, $role);
                 $pageNo = ceil($total / $row);
                 $start = ($page - 1 ) * $row ;
                 $sql .= " LIMIT $start,$row";

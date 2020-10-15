@@ -9,7 +9,7 @@
         $p=1;
     }
     $sql="SELECT tblitem.*, tblcategory.name as namecate, tblstatus.name as namestatus FROM tblitem LEFT JOIN tblcategory on tblitem.categoryId=tblcategory.categoryId LEFT JOIN tblstatus on tblitem.statusId=tblstatus.statusId";
-    $product=$db->fetchJone("tblitem", $sql, $p, 2, true, "itemId");
+    $product=$db->fetchJone("tblitem", $sql, $p, 2, true, "itemId", "WHERE 1=1");
     $pageMax=$product["page"];
     if (isset($product['page'])) {
         $pageNo=$product['page'];
@@ -23,15 +23,14 @@
     <!-- Begin Page Content -->
     <div class="container-fluid">
         <!-- Page Heading -->
+        <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item">Manage item</li>
+        </ol>
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">Item</h1>
+            <a href="../category" class="d-none d-sm-inline-block btn btn-mds btn-success shadow-sm ml-auto mr-2"><i class="fas fa-edit fa-sm text-white-50"></i> MANAGE CATEGORY</a>
             <a href="add.php" class="d-none d-sm-inline-block btn btn-mds btn-success shadow-sm"><i class="fas fa-plus fa-sm text-white-50"></i> ADD ITEM</a>
         </div>
-        <ol class="breadcrumb mb-4">
-            <li class="breadcrumb-item"><a href="../../index.php">Menu</a></li>
-            <li class="breadcrumb-item"><a href="../../manageItem.php">Manage item</a></li>
-            <li class="breadcrumb-item active">Category</li>
-        </ol>
         <div class="clearfix"></div>
         <!-- notification -->
             <?php require_once __dir__. "/../../../partials/notification.php"; ?>
@@ -39,7 +38,7 @@
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <h4 class="m-0 font-weight-bold text-primary">Category listboard</h4>
+                <h4 class="m-0 font-weight-bold text-primary">Item listboard</h4>
             </div>
             <div class="card-body">
                 <div class="table-responsive">

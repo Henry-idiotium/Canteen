@@ -18,18 +18,19 @@
 <?php require_once __dir__. "/../../layouts/header.php"; ?>
 
     <!-- Begin Page Content -->
+    <div class="container-fluid text-right pb-1">
+      <a class="btn btn-xs btn-info display-inline-block ml-auto" href="index.php"><i class="fas fa-undo"></i> Menu</a>
+    </div>
     <div class="container-fluid">
         <!-- Page Heading -->
+        <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item"><a href="index.php">Manage account</a></li>
+            <li class="breadcrumb-item active">Admin account</li>
+        </ol>
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <a class="btn btn-xs btn-info" href="index.php"><i class="fas fa-edit"></i> Menu</a>
-            <h1 class="h3 mb-0 text-gray-800">Item</h1>
+            <h1 class="h3 mb-0 text-gray-800">Admin account</h1>
             <a href="add.php?addrole=1" class="d-none d-sm-inline-block btn btn-mds btn-success shadow-sm"><i class="fas fa-plus fa-sm text-white-50"></i> ADD ADMIN</a>
         </div>
-        <ol class="breadcrumb mb-4">
-            <li class="breadcrumb-item"><a href="../../index.php">Menu</a></li>
-            <li class="breadcrumb-item"><a href="../../manageItem.php">Manage item</a></li>
-            <li class="breadcrumb-item active">Category</li>
-        </ol>
         <div class="clearfix"></div>
         <!-- notification -->
         <?php require_once __dir__. "/../../../partials/notification.php"; ?>

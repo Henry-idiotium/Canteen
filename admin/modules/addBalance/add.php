@@ -1,6 +1,6 @@
 <?php
 
-    $open="manageitem";
+    $open="addbalance";
     require_once __dir__. "/../../autoload/autoload.php";
     $id=strval(getInput("name"));
     $addbalance=$db->fetchID("tbluser", 'username', "'".$id."'");
@@ -47,14 +47,13 @@
     <!-- Begin Page Content -->
     <div class="container-fluid">
         <!-- Page Heading -->
-        <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Category</h1>
-        </div>
         <ol class="breadcrumb mb-4">
-            <li class="breadcrumb-item"><a href="index.html">Manage item</a></li>
-            <li class="breadcrumb-item"><a href="index.php">Category</a></li>
+            <li class="breadcrumb-item"><a href="index.php">Add balance</a></li>
             <li class="breadcrumb-item active">Add</li>
         </ol>
+        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">Add</h1>
+        </div>
         <div class="clearfix"></div>
         <?php require_once __dir__. "/../../../partials/notification.php"; ?>
         <!-- Content Row -->
@@ -99,7 +98,7 @@
                 </div>
             </div>
         </form>
-        <a class="btn btn-xs btn-info" href="index.php"><i class="fas fa-edit"></i> Cancle</a>
+        <a class="btn btn-xs btn-info" href="index.php"><i class="fas fa-undo"></i> Cancle</a>
     </div>
     <!-- End of Main Content -->
 
