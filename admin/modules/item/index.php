@@ -36,7 +36,7 @@
       $asd=3;
     }
     $sql="SELECT tblitem.*, tblcategory.name as namecate, tblstatus.name as namestatus FROM tblitem LEFT JOIN tblcategory on tblitem.categoryId=tblcategory.categoryId LEFT JOIN tblstatus on tblitem.statusId=tblstatus.statusId WHERE ".$cate." AND tblitem.statusId=$statusid"." ".$orderby;
-    $product=$db->fetchJone("tblitem", $sql, $p, 2, true, "itemId", "WHERE 1=1");
+    $product=$db->fetchJone("tblitem", $sql, $p, 2, true, "itemId", "WHERE ".$cate." AND tblitem.statusId=$statusid");
     $pageMax=$product["page"];
     if (isset($product['page'])) {
         $pageNo=$product['page'];
