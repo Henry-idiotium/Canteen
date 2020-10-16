@@ -169,15 +169,15 @@
         </div>
         <ul class="pagination">
             <li class="paginate_button page-item previous <?php echo isset($p) && $p==1 ? "disabled" : "" ?>" id="dtBasicExample_previous">
-                <a href="/Canteen/admin/modules/item/?<?php echo $cate ?>&page=<?php echo $p-1; ?>" aria-controls="dtBasicExample" data-dt-idx="0" tabindex="0" class="page-link">Previous</a>
+                <a href="/Canteen/admin/modules/item/?cate=<?php echo $cateid ?>&page=<?php echo $p-1; ?>&orderby=<?php echo $orderby; ?>&asd=<?php echo $asd; ?>&status=<?php echo $statusid ?>" aria-controls="dtBasicExample" data-dt-idx="0" tabindex="0" class="page-link">Previous</a>
             </li>
             <?php $NoP=1; for ($i=0; $i < $pageMax  ; $i++): ?>
                 <li class="paginate_button page-item <?php echo isset($p) && $p==$NoP ? "active" : "" ?>">
-                    <a href="/Canteen/admin/modules/item/?<?php echo $cate ?>&page=<?php echo $NoP; ?>" aria-controls="dtBasicExample" data-dt-idx="3" tabindex="0" class="page-link"><?php echo $NoP; ?></a>
+                    <a href="/Canteen/admin/modules/item/?cate=<?php echo $cateid ?>&page=<?php echo $NoP; ?>&orderby=<?php echo $orderby; ?>&asd=<?php echo $asd; ?>&status=<?php echo $statusid ?>" aria-controls="dtBasicExample" data-dt-idx="3" tabindex="0" class="page-link"><?php echo $NoP; ?></a>
                 </li>
             <?php $NoP++; endfor?>
             <li class="paginate_button page-item next <?php echo isset($p) && $p==$pageMax ? "disabled" : "" ?>" id="dtBasicExample_next">
-                <a href="/Canteen/admin/modules/item/?<?php echo $cate ?>&page=<?php echo $p+1; ?>" aria-controls="dtBasicExample" data-dt-idx="7" tabindex="0" class="page-link">Next</a>
+                <a href="/Canteen/admin/modules/item/?cate=<?php echo $cateid ?>&page=<?php echo $p+1; ?>&orderby=<?php echo $orderby; ?>&asd=<?php echo $asd; ?>&status=<?php echo $statusid ?>" aria-controls="dtBasicExample" data-dt-idx="7" tabindex="0" class="page-link">Next</a>
             </li>
         </ul>
     </div>
