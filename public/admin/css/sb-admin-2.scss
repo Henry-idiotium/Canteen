@@ -587,9 +587,9 @@ pre code {
   }
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 1400px) {
   .container {
-    max-width: 1140px;
+    max-width: 1800px !important;
   }
 }
 
@@ -1363,7 +1363,7 @@ pre code {
   }
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 1600px) {
   .col-xl {
     flex-basis: 0;
     flex-grow: 1;
@@ -11246,3 +11246,4 @@ body.sidebar-toggled footer.sticky-footer {
   font-size: 3rem !important;
   color: var(--primary-clr-main);
 }
+

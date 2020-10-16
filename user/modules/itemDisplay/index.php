@@ -10,7 +10,7 @@
     <!-- Begin Page Content -->
     <div class="container">
         <div class="row">
-            <div class="card shadow mb-4 col-7">
+            <div class="card shadow mb-4 col-xl-7 col-lg-8 col-12">
                 <div class="card-header py-3">
                     <h4 class="d-inline-block m-0 font-weight-bold text-primary">Drinks</h4>
                     <!-- Item Search -->
@@ -35,55 +35,52 @@
                         </div>
                     </div>
                 </div>
-
-
-
-                <div class="card-body row">
-                    <div class="col-4">
-                        <article>
+                <div class="card-body row align-self-center">
+                    <div class="col-xl-4 col-lg-6">
+                        <article class="d-item mb-5 mt-2">
                             <img src="../../../public/uploads/product/Eg8bkhoUwAA0qV1.png" width="100%">
                         </article>
-                        <article>
+                        <article class="d-item mb-5 mt-2">
                             <img src="../../../public/uploads/product/Eg8bkhoUwAA0qV1.png" width="100%">
                         </article>
                     </div>
-                    <div class="col-4">
-                        <article>
+                    <div class="col-xl-4 col-lg-6">
+                        <article class="d-item mb-5 mt-2">
                             <img src="../../../public/uploads/product/Eg8bkhoUwAA0qV1.png" width="100%">
                         </article>
-                        <article>
+                        <article class="d-item mb-4">
                             <img src="../../../public/uploads/product/Eg8bkhoUwAA0qV1.png" width="100%">
                         </article>
                     </div>
-                    <div class="col-4">
-                        <article>
+                    <div class="col-xl-4 col-lg-6">
+                        <article class="d-item mb-4">
                             <img src="../../../public/uploads/product/Eg8bkhoUwAA0qV1.png" width="100%">
                         </article>
-                        <article>
-                            <img src="../../../public/uploads/product/Eg8bkhoUwAA0qV1.png" width="100%">
+                        <article class="d-item mb-4">
+                            <img src="../../../public/uploads/product/Egf6BckU4AA05UR.jpg" width="100%">
                         </article>
                     </div>
                 </div>
             </div>
 
-            <div class="card shadow mb-4 col-5">
+            <div class="card shadow mb-4 col-xl-5 col-lg-4 col-12">
                 <div class="card-header py-3">
                     <h4 class="m-0 font-weight-bold text-primary">Recommendations</h4>
                 </div>
-                <div class="card-body row">
-                    <div class="col-6">
-                        <article>
-                            <img src="../../../public/uploads/product/75250981_p0.jpg" width="100%">
+                <div class="card-body row align-self-center">
+                    <div class="col-xl-6 col-12">
+                        <article class="mb-4 d-item">
+                            <img src="../../../public/uploads/product/Egf6BckU4AA05UR.jpg" width="100%">
                         </article>
-                        <article>
+                        <article class="mb-4 d-item">
                             <img src="../../../public/uploads/product/75250981_p0.jpg" width="100%">
                         </article>
                     </div>
-                    <div class="col-6">
-                        <article>
+                    <div class="col-xl-6 col-12">
+                        <article class="mb-4 d-item">
                             <img src="../../../public/uploads/product/75250981_p0.jpg" width="100%">
                         </article>
-                        <article>
+                        <article class="mb-4 d-item">
                             <img src="../../../public/uploads/product/75250981_p0.jpg" width="100%">
                         </article>
                     </div>
