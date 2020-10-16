@@ -16,8 +16,8 @@
     else{
         $p=1;
     }
-    $sql="SELECT tbluser.*, tbldepartment.name as namede FROM tbluser LEFT JOIN tbldepartment on tbldepartment.departmentId=tbluser.departmentId WHERE tbluser.departmentId=$de ORDER BY createAt DESC ";
-    $user=$db->fetchJone("tbluser", $sql, $p, 1, true, "username","WHERE departmentId=".$de);
+    $sql="SELECT tbluser.*, tbldepartment.name as namede FROM tbluser LEFT JOIN tbldepartment on tbldepartment.departmentId=tbluser.departmentId WHERE tbluser.departmentId=$de ORDER BY name DESC ";
+    $user=$db->fetchJone("tbluser", $sql, $p, 2, true, "username","WHERE departmentId=".$de);
     $pageMax=$user["page"];
     if (isset($user['page'])) {
         $pageNo=$user['page'];
