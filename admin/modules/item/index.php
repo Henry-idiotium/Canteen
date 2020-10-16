@@ -36,7 +36,7 @@
       $asd=3;
     }
     $sql="SELECT tblitem.*, tblcategory.name as namecate, tblstatus.name as namestatus FROM tblitem LEFT JOIN tblcategory on tblitem.categoryId=tblcategory.categoryId LEFT JOIN tblstatus on tblitem.statusId=tblstatus.statusId WHERE ".$cate." AND tblitem.statusId=$statusid"." ".$orderby;
-    $product=$db->fetchJone("tblitem", $sql, $p, 2, true, "itemId", "WHERE ".$cate." AND tblitem.statusId=$statusid");
+    $product=$db->fetchJone("tblitem", $sql, $p, 3, true, "itemId", "WHERE ".$cate." AND tblitem.statusId=$statusid");
     $pageMax=$product["page"];
     if (isset($product['page'])) {
         $pageNo=$product['page'];
@@ -93,9 +93,9 @@
                   <?php elseif ($asd==2): ?>
                     Old created
                   <?php elseif ($asd==3): ?>
-                    Name A-Z
-                  <?php else: ?>
                     Name Z-A
+                  <?php else: ?>
+                    Name A-Z
                   <?php endif; ?>
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -105,7 +105,7 @@
                   <a class="dropdown-item" href="index.php?cate=<?php echo $cateid ?>&orderby=ORDER BY name ASC&asd=4&status=<?php echo $statusid ?>">Name Z-A</a>
                 </div>
               </div>
-              <div class="dropdown d-inline-block ml-auto">
+              <div class="dropdown d-inline-block ml-auto mr-0 float-right">
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <?php foreach ($status as $item):
                     if ($item["statusId"]==$statusid): ?>

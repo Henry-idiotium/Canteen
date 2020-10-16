@@ -6633,6 +6633,7 @@ button.bg-dark:focus {
 
 .d-inline-block {
   display: inline-block !important;
+  
 }
 
 .d-block {
@@ -11239,4 +11240,9 @@ footer.sticky-footer .copyright {
 
 body.sidebar-toggled footer.sticky-footer {
   width: 100%;
+}
+
+.page-logo {
+  font-size: 3rem !important;
+  color: var(--primary-clr-main);
 }
