@@ -8,7 +8,34 @@
     else{
         $p=1;
     }
-    $sql="SELECT tblitem.*, tblcategory.name as namecate, tblstatus.name as namestatus FROM tblitem LEFT JOIN tblcategory on tblitem.categoryId=tblcategory.categoryId LEFT JOIN tblstatus on tblitem.statusId=tblstatus.statusId";
+    $status=$db->fetchAll("tblstatus");
+    if (isset($_GET['status'])) {
+      $statusid=$_GET['status'];
+    }
+    else {
+      $statusid=0;
+    }
+    $category=$db->fetchAll("tblcategory");
+    if (isset($_GET['cate'])) {
+      $cateid=$_GET['cate'];
+      $cate="tblitem.categoryId=".$cateid;
+    }
+    else {
+      $cateid=0;
+      $cate="tblitem.categoryId=tblitem.categoryId";
+    }
+    if ($cateid==0) {
+      $cate="tblitem.categoryId=tblitem.categoryId";
+    }
+    if (isset($_GET['orderby'])) {
+      $orderby=$_GET['orderby'];
+      $asd=$_GET['asd'];
+    }
+    else {
+      $orderby="ORDER BY name DESC";
+      $asd=3;
+    }
+    $sql="SELECT tblitem.*, tblcategory.name as namecate, tblstatus.name as namestatus FROM tblitem LEFT JOIN tblcategory on tblitem.categoryId=tblcategory.categoryId LEFT JOIN tblstatus on tblitem.statusId=tblstatus.statusId WHERE ".$cate." AND tblitem.statusId=$statusid"." ".$orderby;
     $product=$db->fetchJone("tblitem", $sql, $p, 2, true, "itemId", "WHERE 1=1");
     $pageMax=$product["page"];
     if (isset($product['page'])) {
@@ -39,6 +66,58 @@
         <div class="card shadow mb-4">
             <div class="card-header py-3">
                 <h4 class="m-0 font-weight-bold text-primary">Item listboard</h4>
+            </div>
+            <div class="card-header py-3 justify-content-between">
+              <div class="dropdown d-inline-block">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <?php $a=0; foreach ($category as $item):
+                    if ($item["categoryId"]==$cateid): ?>
+                      Category: <?php echo $item["name"]; ?>
+                      <?php $a++ ?>
+                    <?php else: ?>
+                  <?php endif; endforeach ?>
+                  <?php if ($a==0): ?>
+                      Category: All
+                  <?php endif; ?>
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <?php foreach ($category as $item): ?>
+                    <a class="dropdown-item" href="index.php?cate=<?php echo $item["categoryId"] ?>&orderby=<?php echo $orderby; ?>&asd=<?php echo $asd; ?>&status=<?php echo $statusid ?>"><?php echo $item["name"]; ?></a>
+                  <?php endforeach ?>
+                </div>
+              </div>
+              <div class="dropdown d-inline-block">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <?php if ($asd==1): ?>
+                    New created
+                  <?php elseif ($asd==2): ?>
+                    Old created
+                  <?php elseif ($asd==3): ?>
+                    Name A-Z
+                  <?php else: ?>
+                    Name Z-A
+                  <?php endif; ?>
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" href="index.php?cate=<?php echo $cateid ?>&orderby=ORDER BY createAt DESC&asd=1&status=<?php echo $statusid ?>">New created</a>
+                  <a class="dropdown-item" href="index.php?cate=<?php echo $cateid ?>&orderby=ORDER BY createAt ASC&asd=2&status=<?php echo $statusid ?>">Old created</a>
+                  <a class="dropdown-item" href="index.php?cate=<?php echo $cateid ?>&orderby=ORDER BY name DESC&asd=3&status=<?php echo $statusid ?>">Name A-Z</a>
+                  <a class="dropdown-item" href="index.php?cate=<?php echo $cateid ?>&orderby=ORDER BY name ASC&asd=4&status=<?php echo $statusid ?>">Name Z-A</a>
+                </div>
+              </div>
+              <div class="dropdown d-inline-block ml-auto">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <?php foreach ($status as $item):
+                    if ($item["statusId"]==$statusid): ?>
+                      Status: <?php echo $item["name"]; ?>
+                  <?php endif; endforeach ?>
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <?php foreach ($status as $item): ?>
+                    <a class="dropdown-item" href="index.php?cate=<?php echo $cateid ?>&orderby=<?php echo $orderby; ?>&asd=<?php echo $asd; ?>&status=<?php echo $item["statusId"] ?>"><?php echo $item["name"]; ?></a>
+                  <?php endforeach ?>
+                </div>
+              </div>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -90,15 +169,15 @@
         </div>
         <ul class="pagination">
             <li class="paginate_button page-item previous <?php echo isset($p) && $p==1 ? "disabled" : "" ?>" id="dtBasicExample_previous">
-                <a href="/Canteen/admin/modules/item/?page=<?php echo $p-1; ?>" aria-controls="dtBasicExample" data-dt-idx="0" tabindex="0" class="page-link">Previous</a>
+                <a href="/Canteen/admin/modules/item/?<?php echo $cate ?>&page=<?php echo $p-1; ?>" aria-controls="dtBasicExample" data-dt-idx="0" tabindex="0" class="page-link">Previous</a>
             </li>
             <?php $NoP=1; for ($i=0; $i < $pageMax  ; $i++): ?>
                 <li class="paginate_button page-item <?php echo isset($p) && $p==$NoP ? "active" : "" ?>">
-                    <a href="/Canteen/admin/modules/item/?page=<?php echo $NoP; ?>" aria-controls="dtBasicExample" data-dt-idx="3" tabindex="0" class="page-link"><?php echo $NoP; ?></a>
+                    <a href="/Canteen/admin/modules/item/?<?php echo $cate ?>&page=<?php echo $NoP; ?>" aria-controls="dtBasicExample" data-dt-idx="3" tabindex="0" class="page-link"><?php echo $NoP; ?></a>
                 </li>
             <?php $NoP++; endfor?>
             <li class="paginate_button page-item next <?php echo isset($p) && $p==$pageMax ? "disabled" : "" ?>" id="dtBasicExample_next">
-                <a href="/Canteen/admin/modules/item/?page=<?php echo $p+1; ?>" aria-controls="dtBasicExample" data-dt-idx="7" tabindex="0" class="page-link">Next</a>
+                <a href="/Canteen/admin/modules/item/?<?php echo $cate ?>&page=<?php echo $p+1; ?>" aria-controls="dtBasicExample" data-dt-idx="7" tabindex="0" class="page-link">Next</a>
             </li>
         </ul>
     </div>
