@@ -94,4 +94,19 @@
         header("location: ".base_url(). "admin/modules/{$url}"); exit();
     }
 
+    //Divide an Array into N chunks
+    function array_partition(Array $list, $p) {
+        $list_len = count($list);
+        $part_quo = floor($list_len / $p);
+        $part_rem = $list_len % $p;
+        $partition = array();
+        $mark = 0;
+        for($px = 0; $px < $p; $px ++) {
+            $incr = ($px < $part_rem) ? $part_quo + 1 : $part_quo;
+            $partition[$px] = array_slice($list, $mark, $incr);
+            $mark += $incr;
+        }
+        return $partition;
+    }
+
 ?>

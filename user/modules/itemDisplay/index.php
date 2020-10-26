@@ -35,7 +35,13 @@
 
     $product=$db->fetchJone("tblitem", $sql, 0, 0, false, "itemId", "WHERE ".$cate." AND tblitem.statusId=$statusid");
 
+    $itemDisplay=array_partition($product, 3);
+
+    $recommendation=array_partition($product, 2);
+
 ?>
+
+<?php $totalItem=0; foreach ($product as $item): ?><?php $totalItem++; endforeach ?>
 
 <?php require_once __dir__. "/../../layouts/header.php"; ?>
 
@@ -69,41 +75,21 @@
                     </div>
                 </div>
                 <div class="card-body row align-self-center">
+                    <?php foreach ($itemDisplay as $col => $innerCol): ?>
                     <div class="col-xl-4 col-lg-6">
-                        <?php $num=1; foreach ($product as $item): ?>
-                            <article class="d-item mb-5 mt-2">
-                                <img src="<?php echo uploads().$item['image']; ?>" width="100%">
-                                <div class="item-overlay">
-                                    <h3><?php echo $item['name']; ?></h3>
-                                    <button class="item-func item-view fas fa-eye"></button>
-                                    <button class="item-func item-buy fas fa-usd"></button>
-                                    <button class="item-func item-cart fas fa-shopping-cart"></button>
-                                </div>
-                            </article>
-                        <?php $num++; endforeach ?>
+                        <?php foreach ($innerCol as $item): ?>
+                        <article class="d-item mb-5 mt-2">
+                            <img src="<?php echo uploads().$item['image']; ?>" width="100%">
+                            <div class="item-overlay">
+                                <h3><?php echo $item['name']; ?></h3>
+                                <button class="item-func item-view fas fa-eye"></button>
+                                <button class="item-func item-buy fas fa-usd"></button>
+                                <button class="item-func item-cart fas fa-shopping-cart"></button>
+                            </div>
+                        </article>
+                        <?php endforeach ?>
                     </div>
-                    <div class="col-xl-4 col-lg-6">
-                        <article class="d-item mb-5 mt-2">
-                            <img src="../../../public/uploads/product/Eg8bkhoUwAA0qV1.png" width="100%">
-                        </article>
-                        <article class="d-item mb-4">
-                            <img src="../../../public/uploads/product/Eg8bkhoUwAA0qV1.png" width="100%">
-                        </article>
-                        <article class="d-item mb-5 mt-2">
-                            <img src="../../../public/uploads/product/Egf6BckU4AA05UR.jpg" width="100%">
-                        </article>
-                    </div>
-                    <div class="col-xl-4 col-lg-6">
-                        <article class="d-item mb-5 mt-2">
-                            <img src="../../../public/uploads/product/Eg8bkhoUwAA0qV1.png" width="100%">
-                        </article>
-                        <article class="d-item mb-5 mt-2">
-                            <img src="../../../public/uploads/product/Egf6BckU4AA05UR.jpg" width="100%">
-                        </article>
-                        <article class="d-item mb-5 mt-2">
-                            <img src="../../../public/uploads/product/Egf6BckU4AA05UR.jpg" width="100%">
-                        </article>
-                    </div>
+                    <?php endforeach ?>
                 </div>
             </div>
 
@@ -112,22 +98,21 @@
                     <h4 class="m-0 font-weight-bold text-primary">Recommendations</h4>
                 </div>
                 <div class="card-body row align-self-center">
+                    <?php foreach ($recommendation as $col => $innerCol): ?>
                     <div class="col-xl-6 col-12">
+                        <?php foreach ($innerCol as $item): ?>
                         <article class="d-item mb-5 mt-2">
-                            <img src="../../../public/uploads/product/Egf6BckU4AA05UR.jpg" width="100%">
+                            <img src="<?php echo uploads().$item['image']; ?>" width="100%">
+                            <div class="item-overlay">
+                                <h3><?php echo $item['name']; ?></h3>
+                                <button class="item-func item-view fas fa-eye"></button>
+                                <button class="item-func item-buy fas fa-usd"></button>
+                                <button class="item-func item-cart fas fa-shopping-cart"></button>
+                            </div>
                         </article>
-                        <article class="d-item mb-5 mt-2">
-                            <img src="../../../public/uploads/product/75250981_p0.jpg" width="100%">
-                        </article>
+                        <?php endforeach ?>
                     </div>
-                    <div class="col-xl-6 col-12">
-                        <article class="mb-4 d-item">
-                            <img src="../../../public/uploads/product/75250981_p0.jpg" width="100%">
-                        </article>
-                        <article class="mb-4 d-item">
-                            <img src="../../../public/uploads/product/75250981_p0.jpg" width="100%">
-                        </article>
-                    </div>
+                    <?php endforeach ?>
                 </div>
             </div>
 
