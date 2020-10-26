@@ -180,7 +180,7 @@
 
 
 
-         public function fetchAll($table)
+        public function fetchAll($table)
         {
             $sql = "SELECT * FROM {$table} WHERE 1" ;
             $result = mysqli_query($this->link,$sql) or die("Wrong query fetchAll " .mysqli_error($this->link));
@@ -194,39 +194,8 @@
             }
             return $data;
         }
-
-
-        public  function fetchJones($table,$sql,$total = 1,$page,$row ,$pagi = true )
-        {
-
-            $data = [];
-
-            if ($pagi == true )
-            {
-                $sotrang = ceil($total / $row);
-                $start = ($page - 1 ) * $row ;
-                $sql .= " LIMIT $start,$row ";
-                $data = [ "page" => $sotrang];
-
-
-                $result = mysqli_query($this->link,$sql) or die("Wrong query fetchJone ---- " .mysqli_error($this->link));
-            }
-            else
-            {
-                $result = mysqli_query($this->link,$sql) or die("Wrong query fetchJone ---- " .mysqli_error($this->link));
-            }
-
-            if( $result)
-            {
-                while ($num = mysqli_fetch_assoc($result))
-                {
-                    $data[] = $num;
-                }
-            }
-
-            return $data;
-        }
-         public  function fetchJone($table,$sql ,$page = 0,$row ,$pagi = false, $id, $role)
+        
+        public  function fetchJone($table,$sql ,$page = 0,$row ,$pagi = false, $id, $role)
         {
 
             $data = [];
