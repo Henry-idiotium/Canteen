@@ -92,10 +92,10 @@
                             <div class="item-overlay d-flex text-center justify-content-center">
                                 <div class="d-inline-block my-auto align-self-center">
                                     <h3><?php echo $item['name']; ?></h3>
-                                    <a href="itemDisplay.php?image=<?php echo $item['image'] ?>">
+                                    <a href="itemDisplay.php?itemId=<?php echo $item['itemId'] ?>">
                                         <button class="item-func item-view fas fa-eye"></button>
                                     </a>
-                                    <a href="addCart.php?image=<?php echo $item['image'] ?>">
+                                    <a href="addCart.php?itemId=<?php echo $item['itemId'] ?>">
                                         <button class="item-func item-cart fas fa-shopping-cart"></button>
                                     </a>
                                 </div>
@@ -126,10 +126,10 @@
                             <div class="item-overlay d-flex text-center justify-content-center">
                                 <div class="d-inline-block my-auto align-self-center">
                                     <h3 class=""><?php echo $item['name']; ?></h3>
-                                    <a href="itemDisplay.php?image=<?php echo $item['image'] ?>">
+                                    <a href="itemDisplay.php?itemId=<?php echo $item['itemId'] ?>">
                                         <button class="item-func item-view fas fa-eye"></button>
                                     </a>
-                                    <a href="addCart.php?image=<?php echo $item['image'] ?>">
+                                    <a href="addCart.php?itemId=<?php echo $item['itemId'] ?>">
                                         <button class="item-func item-cart fas fa-shopping-cart"></button>
                                     </a>
                                 </div>
