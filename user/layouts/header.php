@@ -13,11 +13,12 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
         <!-- Custom styles for this template-->
         <link href="<?php echo base_url() ?>public/admin/css/sb-admin-2.scss" rel="stylesheet">
+        <link href="<?php echo base_url() ?>public/admin/css/mycss.css" rel="stylesheet">
     </head>
     <body id="page-top">
         <!-- Page Wrapper -->
         <div id="wrapper">
-            
+
             <!-- Sidebar -->
             <?php
                 /*
@@ -67,7 +68,7 @@
                     <!-- Topbar -->
                     <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
                         <div class="container p-1">
-                            <!-- Sidebar Toggle (Topbar) 
+                            <!-- Sidebar Toggle (Topbar)
                             <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                             <i class="fa fa-bars"></i>
                             </button> -->
@@ -78,7 +79,7 @@
                                     <i class="fas fa-laugh-wink"></i>
                                 </div>
                             </a>
-                            
+
                             <!-- Topbar Navbar -->
                             <ul class="navbar-nav ml-auto">
                                 <!-- Nav Item - Search Dropdown (Visible Only XS) -->

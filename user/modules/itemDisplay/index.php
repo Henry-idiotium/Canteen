@@ -53,15 +53,24 @@
                 <div class="card-header py-3">
                     <h4 class="d-inline-block m-0 font-weight-bold text-primary">Drinks</h4>
                     <!-- Item Search -->
-                    <form class="float-right d-inline-block d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                        <div class="input-group">
-                            <input type="text" class="form-control border-1 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
-                            <div class="input-group-append">
-                                <button class="btn btn-primary" type="button">
-                                    <i class="fas fa-search fa-sm"></i>
-                                </button>
-                            </div>
+                    <?php
+                      $con=mysqli_connect("localhost","root","","Canteen");
+                      $products = mysqli_query($con, "SELECT * FROM tblitem ORDER BY name ASC ");
+                      $forsearch=array();
+                      foreach ($products as $item) {
+                        array_push($forsearch, $item['name']);
+                      }
+                    ?>
+                    <form autocomplete="off" method="GET" class="float-right d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                      <div class="input-group">
+                        <input id="myInput" type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2"
+                        value="<?=isset($_GET['searchname']) ? $_GET['searchname'] : ""?>" name="searchname">
+                        <div class="input-group-append">
+                          <button class="btn btn-primary" type="submit">
+                            <i class="fas fa-search fa-sm"></i>
+                          </button>
                         </div>
+                      </div>
                     </form>
                 </div>
                 <div class="card-header py-3 justify-content-between">
@@ -123,5 +132,3 @@
 
 
 <?php require_once __dir__. "/../../layouts/footer.php"; ?>
-
-

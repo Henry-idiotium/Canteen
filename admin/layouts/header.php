@@ -71,26 +71,6 @@
                         <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                         <i class="fa fa-bars"></i>
                         </button>
-                        <!-- Topbar Search -->
-                        <?php
-                          $con=mysqli_connect("localhost","root","","Canteen");
-                          $products = mysqli_query($con, "SELECT * FROM tblitem ORDER BY name ASC ");
-                          $forsearch=array();
-                          foreach ($products as $item) {
-                            array_push($forsearch, $item['name']);
-                          }
-                        ?>
-                        <form autocomplete="off" method="GET" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                          <div class="input-group">
-                            <input id="myInput" type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2"
-                            value="<?=isset($_GET['searchname']) ? $_GET['searchname'] : ""?>" name="searchname">
-                            <div class="input-group-append">
-                              <button class="btn btn-primary" type="submit">
-                                <i class="fas fa-search fa-sm"></i>
-                              </button>
-                            </div>
-                          </div>
-                        </form>
                         <!-- Topbar Navbar -->
                         <ul class="navbar-nav ml-auto">
                             <!-- Nav Item - Search Dropdown (Visible Only XS) -->

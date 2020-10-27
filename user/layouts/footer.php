@@ -27,7 +27,7 @@
             </div>
         </div>
         <!-- End of Page Wrapper -->
-        
+
         <!-- Footer -->
         <footer class="sticky-footer bg-dark">
             <div class="container">
@@ -59,7 +59,7 @@
                                     <br>
                                     Version Out Now
                                     <br>
-                                    10 <b>Mins Ago</b> 
+                                    10 <b>Mins Ago</b>
                                 </span>
                             </li>
                             <li>
@@ -68,7 +68,7 @@
                                     <br>
                                     Version Out Now
                                     <br>
-                                    10 <b>Mins Ago</b> 
+                                    10 <b>Mins Ago</b>
                                 </span>
                             </li>
                             <li>
@@ -77,7 +77,7 @@
                                     <br>
                                     Version Out Now
                                     <br>
-                                    10 <b>Mins Ago</b> 
+                                    10 <b>Mins Ago</b>
                                 </span>
                             </li>
                         </ul>
@@ -99,7 +99,7 @@
             </div>
         </footer>
         <!-- End of Footer -->
-        
+
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <!-- Bootstrap core JavaScript-->
         <script src="<?php echo base_url() ?>public/admin/js/jquery.min.js"></script>
@@ -113,6 +113,9 @@
         <!-- Page level custom scripts -->
         <script src="<?php echo base_url() ?>public/admin/js/demo/chart-area-demo.js"></script>
         <script src="<?php echo base_url() ?>public/admin/js/demo/chart-pie-demo.js"></script>
+        <script type="text/javascript">
+          var countries = <?php echo json_encode($forsearch); ?>;
+        </script>
         <script src="<?php echo base_url() ?>public/admin/js/myjs.js"></script>
     </body>
 </html>
