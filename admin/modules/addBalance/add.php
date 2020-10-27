@@ -19,23 +19,24 @@
         // echo $name;
 
         $data = $addbalance;
-        $data["currentBalance"]= $data["currentBalance"]+postInput("addBalance");
+        $data["currentBalance"]= $data["currentBalance"]+floatval(postInput("addBalance"));
 
         $error = [];
 
 
-        if (postInput("addBalance")==0) $error["addBalance"]="Please fill out this form completely";
+        if (is_numeric(postInput("addBalance"))==0) $error["addBalance"]="Please fill out this form correctly";
+
 
 
         if (empty($error)) {
             $idadd=$db->update("tbluser", $data, array("username"=>$id));
             if ($idadd>0) {
                 $_SESSION["success"]="Add successfully";
-                redirectCate("addBalance");
+                redirectCate("addBalance/index.php?de=".$addbalance["departmentId"]);
             }
             else {
-                $_SESSION["error"]="Edit canceled";
-                redirectCate("addBalance");
+                $_SESSION["error"]="$0 added";
+                redirectCate("addBalance/index.php?de=".$addbalance["departmentId"]);
             }
         }
     }
@@ -85,7 +86,7 @@
             <div class="form-group row mr-auto ml-auto justify-content-center">
                 <label for="inputItemName" class="col-sm-2 col-form-label">Amount</label>
                 <div class="col-sm-8">
-                    <input type="number" value=0 class="form-control" id="inputItemName" name="addBalance" placeholder="Amount">
+                    <input type="number" value="0" class="form-control" id="inputItemName" name="addBalance" placeholder="Amount">
                     <?php if (isset($error["addBalance"])): ?>
                     <p class="text-danger ">&nbsp <?php echo $error["addBalance"]; ?></p>
                     <?php endif ?>

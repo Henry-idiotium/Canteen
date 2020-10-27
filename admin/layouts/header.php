@@ -9,6 +9,7 @@
         <title>Admin site</title>
         <!-- Custom fonts for this template-->
         <link href="<?php echo base_url() ?>public/admin/css/all.min.css" rel="stylesheet" type="text/css">
+        <link href="<?php echo base_url() ?>public/admin/css/mycss.css" rel="stylesheet" type="text/css">
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
         <!-- Custom styles for this template-->
@@ -71,15 +72,24 @@
                         <i class="fa fa-bars"></i>
                         </button>
                         <!-- Topbar Search -->
-                        <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                            <div class="input-group">
-                                <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
-                                <div class="input-group-append">
-                                    <button class="btn btn-primary" type="button">
-                                        <i class="fas fa-search fa-sm"></i>
-                                    </button>
-                                </div>
+                        <?php
+                          $con=mysqli_connect("localhost","root","","Canteen");
+                          $products = mysqli_query($con, "SELECT * FROM tblitem ORDER BY name ASC ");
+                          $forsearch=array();
+                          foreach ($products as $item) {
+                            array_push($forsearch, $item['name']);
+                          }
+                        ?>
+                        <form autocomplete="off" method="GET" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                          <div class="input-group">
+                            <input id="myInput" type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2"
+                            value="<?=isset($_GET['searchname']) ? $_GET['searchname'] : ""?>" name="searchname">
+                            <div class="input-group-append">
+                              <button class="btn btn-primary" type="submit">
+                                <i class="fas fa-search fa-sm"></i>
+                              </button>
                             </div>
+                          </div>
                         </form>
                         <!-- Topbar Navbar -->
                         <ul class="navbar-nav ml-auto">
@@ -91,7 +101,7 @@
                                 <!-- Dropdown - Messages -->
                                 <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
                                     <form class="form-inline mr-auto w-100 navbar-search">
-                                        <div class="input-group">
+                                        <div method="get" class="input-group">
                                             <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
                                             <div class="input-group-append">
                                                 <button class="btn btn-primary" type="button">
