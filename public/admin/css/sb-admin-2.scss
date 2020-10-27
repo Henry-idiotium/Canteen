@@ -11254,8 +11254,8 @@ body.sidebar-toggled footer.sticky-footer {
 .item-overlay {
   position: absolute;
   transition: all 0.23s ease; 
-  background-color: #000; 
-  opacity: 0;
+  background-color: rgba(0, 0, 0, 0.26);
+  visibility: hidden;
   height: 100%; 
   width: 100%; 
   top: 0; 
@@ -11263,6 +11263,5 @@ body.sidebar-toggled footer.sticky-footer {
 }
 
 .d-item:hover .item-overlay {
-  opacity: .5;
+  visibility: visible;
 }
-
