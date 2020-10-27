@@ -92,9 +92,12 @@
                             <div class="item-overlay d-flex text-center justify-content-center">
                                 <div class="d-inline-block my-auto align-self-center">
                                     <h3><?php echo $item['name']; ?></h3>
-                                    <button class="item-func item-view fas fa-eye"></button>
-                                    <button class="item-func item-buy fas fa-usd"></button>
-                                    <button class="item-func item-cart fas fa-shopping-cart"></button>
+                                    <a href="itemDisplay.php?image=<?php echo $item['image'] ?>">
+                                        <button class="item-func item-view fas fa-eye"></button>
+                                    </a>
+                                    <a href="addCart.php?image=<?php echo $item['image'] ?>">
+                                        <button class="item-func item-cart fas fa-shopping-cart"></button>
+                                    </a>
                                 </div>
                             </div>
                         </article>
@@ -123,9 +126,12 @@
                             <div class="item-overlay d-flex text-center justify-content-center">
                                 <div class="d-inline-block my-auto align-self-center">
                                     <h3 class=""><?php echo $item['name']; ?></h3>
-                                    <button class="item-func item-view fas fa-eye"></button>
-                                    <button class="item-func item-buy fas fa-usd"></button>
-                                    <button class="item-func item-cart fas fa-shopping-cart"></button>
+                                    <a href="itemDisplay.php?image=<?php echo $item['image'] ?>">
+                                        <button class="item-func item-view fas fa-eye"></button>
+                                    </a>
+                                    <a href="addCart.php?image=<?php echo $item['image'] ?>">
+                                        <button class="item-func item-cart fas fa-shopping-cart"></button>
+                                    </a>
                                 </div>
                             </div>
                         </article>
