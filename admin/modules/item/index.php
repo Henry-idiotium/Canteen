@@ -156,7 +156,7 @@
                         <td><?php echo $item["namecate"] ?></td>
                         <td><?php echo $item["namestatus"] ?></td>
                         <td><?php echo $item["slug"] ?></td>
-                        <td><img src="<?php echo uploads().$item['image']; ?>" width="160px" height="200px"></td>
+                        <td><div class="item-img-dis" style="background-image: url('<?php echo uploads().$item['image']; ?>');"></div></td>
                         <td><?php echo $item["createAt"] ?></td>
                         <td>
                             <a class="btn btn-xs btn-info" href="edit.php?id=<?php echo $item["itemId"]; ?>"><i class="fas fa-edit"></i> Edit</a>
