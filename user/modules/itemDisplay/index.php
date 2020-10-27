@@ -89,11 +89,13 @@
                         <?php foreach ($innerCol as $item): ?>
                         <article class="d-item mb-5 mt-2">
                             <img src="<?php echo uploads().$item['image']; ?>" width="100%">
-                            <div class="item-overlay">
-                                <h3><?php echo $item['name']; ?></h3>
-                                <button class="item-func item-view fas fa-eye"></button>
-                                <button class="item-func item-buy fas fa-usd"></button>
-                                <button class="item-func item-cart fas fa-shopping-cart"></button>
+                            <div class="item-overlay d-flex text-center justify-content-center">
+                                <div class="d-inline-block my-auto align-self-center">
+                                    <h3><?php echo $item['name']; ?></h3>
+                                    <button class="item-func item-view fas fa-eye"></button>
+                                    <button class="item-func item-buy fas fa-usd"></button>
+                                    <button class="item-func item-cart fas fa-shopping-cart"></button>
+                                </div>
                             </div>
                         </article>
                         <?php endforeach ?>
@@ -104,6 +106,12 @@
 
             <div class="card shadow mb-4 col-xl-5 col-lg-4 col-12">
                 <div class="card-header py-3">
+                    <h4 class="m-0 font-weight-bold text-primary">Notifications</h4>
+                </div>
+                <div class="card-body row align-self-center">
+                    future content
+                </div>
+                <div class="card-header py-3">
                     <h4 class="m-0 font-weight-bold text-primary">Recommendations</h4>
                 </div>
                 <div class="card-body row align-self-center">
@@ -112,11 +120,13 @@
                         <?php foreach ($innerCol as $item): ?>
                         <article class="d-item mb-5 mt-2">
                             <img src="<?php echo uploads().$item['image']; ?>" width="100%">
-                            <div class="item-overlay">
-                                <h3><?php echo $item['name']; ?></h3>
-                                <button class="item-func item-view fas fa-eye"></button>
-                                <button class="item-func item-buy fas fa-usd"></button>
-                                <button class="item-func item-cart fas fa-shopping-cart"></button>
+                            <div class="item-overlay d-flex text-center justify-content-center">
+                                <div class="d-inline-block my-auto align-self-center">
+                                    <h3 class=""><?php echo $item['name']; ?></h3>
+                                    <button class="item-func item-view fas fa-eye"></button>
+                                    <button class="item-func item-buy fas fa-usd"></button>
+                                    <button class="item-func item-cart fas fa-shopping-cart"></button>
+                                </div>
                             </div>
                         </article>
                         <?php endforeach ?>
