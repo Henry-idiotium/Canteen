@@ -195,7 +195,7 @@
             }
             return $data;
         }
-        
+
         public  function fetchJone($table,$sql ,$page = 0,$row ,$pagi = false, $id, $role)
         {
 

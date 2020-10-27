@@ -2,3 +2,5 @@
 
 - Add php to show username for the user in line 27 "user/layouts/header.php"
 - Add php to dynamic shopping cart for the user start at line 152 "user/layouts/header.php"
+- User sign up department not fix
+- status

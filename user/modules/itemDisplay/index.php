@@ -1,7 +1,7 @@
 <?php
 
     require_once __dir__. "/../../autoload/autoload.php";
-
+    $account=$_GET['account'];
     $status=$db->fetchAll("tblstatus");
     if (isset($_GET['status'])) $statusid=$_GET['status'];
     else {
@@ -74,14 +74,24 @@
                     </form>
                 </div>
                 <div class="card-header py-3 justify-content-between">
-                    <div class="dropdown d-inline-block">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Category: All
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item">ASDASDASD</a>
-                        </div>
+                  <div class="dropdown d-inline-block">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <?php $a=0; foreach ($category as $item):
+                        if ($item["categoryId"]==$cateid): ?>
+                          Category: <?php echo $item["name"]; ?>
+                          <?php $a++ ?>
+                        <?php else: ?>
+                      <?php endif; endforeach ?>
+                      <?php if ($a==0): ?>
+                          Category: All
+                      <?php endif; ?>
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                      <?php foreach ($category as $item): ?>
+                        <a class="dropdown-item" href="index.php?cate=<?php echo $item["categoryId"] ?>&orderby=<?php echo $orderby; ?>&asd=<?php echo $asd; ?>&status=<?php echo $statusid ?>"><?php echo $item["name"]; ?></a>
+                      <?php endforeach ?>
                     </div>
+                  </div>
                 </div>
                 <div class="card-body row align-self-center">
                     <?php foreach ($itemDisplay as $col => $innerCol): ?>
@@ -95,7 +105,7 @@
                                     <a href="itemDisplay.php?image=<?php echo $item['image'] ?>">
                                         <button class="item-func item-view fas fa-eye"></button>
                                     </a>
-                                    <a href="addCart.php?image=<?php echo $item['image'] ?>">
+                                    <a href="addCart.php?itemadd=<?php echo $item['itemId']; ?>&account=<?php echo $account; ?>">
                                         <button class="item-func item-cart fas fa-shopping-cart"></button>
                                     </a>
                                 </div>
@@ -129,7 +139,7 @@
                                     <a href="itemDisplay.php?image=<?php echo $item['image'] ?>">
                                         <button class="item-func item-view fas fa-eye"></button>
                                     </a>
-                                    <a href="addCart.php?image=<?php echo $item['image'] ?>">
+                                    <a href="addCart.php?itemadd=<?php echo $item['id']; ?>">
                                         <button class="item-func item-cart fas fa-shopping-cart"></button>
                                     </a>
                                 </div>

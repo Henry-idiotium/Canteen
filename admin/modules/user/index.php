@@ -5,6 +5,8 @@
 <?php require_once __dir__. "/../../layouts/header.php"; ?>
 
     <!-- Begin Page Content -->
+    <!-- notification -->
+        <?php require_once __dir__. "/../../../partials/notification.php"; ?>
     <ol class="breadcrumb m-4">
         <li class="breadcrumb-item">Manage account</li>
     </ol>
