@@ -11247,3 +11247,22 @@ body.sidebar-toggled footer.sticky-footer {
   color: var(--primary-clr-main);
 }
 
+.d-item {
+  position: relative;
+}
+
+.item-overlay {
+  position: absolute;
+  transition: all 0.23s ease; 
+  background-color: #000; 
+  opacity: 0;
+  height: 100%; 
+  width: 100%; 
+  top: 0; 
+  left: 0; 
+}
+
+.d-item:hover .item-overlay {
+  opacity: .5;
+}
+

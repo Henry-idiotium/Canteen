@@ -181,7 +181,7 @@
 
 
 
-         public function fetchAll($table)
+        public function fetchAll($table)
         {
             $sql = "SELECT * FROM {$table} WHERE 1" ;
             $result = mysqli_query($this->link,$sql) or die("Wrong query fetchAll " .mysqli_error($this->link));
@@ -195,10 +195,8 @@
             }
             return $data;
         }
-
-
-      
-         public  function fetchJone($table,$sql ,$page = 0,$row ,$pagi = false, $id, $role)
+        
+        public  function fetchJone($table,$sql ,$page = 0,$row ,$pagi = false, $id, $role)
         {
 
             $data = [];
