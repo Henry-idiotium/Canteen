@@ -58,18 +58,20 @@
                                         </form>
                                     </div>
                                 </li>
-                                <!-- Nav Item - Alerts -->
+
+                                <!-- Nav Item - Cart -->
                                 <li class="nav-item dropdown no-arrow mx-1">
                                     <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <i class="fas fa-bell fa-fw"></i>
-                                        <!-- Counter - Alerts -->
-                                        <span class="badge badge-danger badge-counter">1+</span>
+                                        <i class="fas fa-shopping-cart fa-fw"></i>
+                                        <!-- Counter - Cart -->
+                                        <span class="badge badge-danger badge-counter">1</span>
                                     </a>
-                                    <!-- Dropdown - Alerts -->
+                                    <!-- Dropdown - Cart -->
                                     <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
                                         <h6 class="dropdown-header">
-                                            Alerts Center
+                                            Shopping Cart Overview
                                         </h6>
+
                                         <a class="dropdown-item d-flex align-items-center" href="#">
                                             <div class="mr-3">
                                                 <div class="icon-circle bg-warning">
@@ -81,51 +83,19 @@
                                                 Spending Alert: We've noticed unusually high spending for your account.
                                             </div>
                                         </a>
-                                        <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
-                                    </div>
-                                </li>
-                                <!-- Nav Item - Messages -->
-                                <li class="nav-item dropdown no-arrow mx-1">
-                                    <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <i class="fas fa-envelope fa-fw"></i>
-                                        <!-- Counter - Messages -->
-                                        <span class="badge badge-danger badge-counter">1</span>
-                                    </a>
-                                    <!-- Dropdown - Messages -->
-                                    <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
-                                        <h6 class="dropdown-header">
-                                            Message Center
-                                        </h6>
-                                        <a class="dropdown-item d-flex align-items-center" href="#">
-                                            <div class="dropdown-list-image mr-3">
-                                                <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60" alt="">
-                                                <div class="status-indicator bg-success"></div>
-                                            </div>
-                                            <div>
-                                                <div class="text-truncate">Am I a good boy? The reason I ask is because someone told me that people say this to all dogs, even if they aren't good...</div>
-                                                <div class="small text-gray-500">Chicken the Dog · 2w</div>
-                                            </div>
+
+                                        <a class="dropdown-item text-center small text-gray-500" href="cart.php?account=<?php echo $account; ?>" id="messagesDropdown">
+                                            Show Cart Detail
                                         </a>
-                                        <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
                                     </div>
                                 </li>
 
-                                <!-- Nav Item - Shopping Cart -->
-                                <li class="nav-item dropdown no-arrow mx-1">
-                                    <a class="nav-link dropdown-toggle" href="cart.php?account=<?php echo $account; ?>" id="messagesDropdown">
-                                        <i class="fas fa-shopping-cart fa-fw"></i>
-                                        <!-- Counter - Messages -->
-                                        <span class="badge badge-danger badge-counter">1</span>
-                                    </a>
-                                    <!-- Dropdown - Messages -->
-
-                                </li>
                                 <div class="topbar-divider d-none d-sm-block"></div>
 
                                 <!-- Nav Item - User Information -->
                                 <li class="nav-item dropdown no-arrow">
                                     <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <span class="mr-2 d-none d-lg-inline text-gray-600 small">Valerie Luna</span>
+                                    <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $account; ?></span>
                                     <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
                                     </a>
                                     <!-- Dropdown - User Information -->

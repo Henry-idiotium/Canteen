@@ -89,123 +89,152 @@
 
 ?>
 
-<?php require_once __dir__. "\header.php"; ?>
+<?php require_once __dir__. "/layouts/header.php"; ?>
 
     <!-- Begin Page Content -->
-    <div class="container mt-5">
-      <div class="row">
-        <div class="col">
-          <!-- Page Heading -->
-          <div class="clearfix"></div>
-          <!-- Content Row -->
-          <!-- DataTales Example -->
-          <form action="" method="POST" class="form-horizontal" enctype="multipart/form-data">
-              <div class="form-group row mr-auto ml-auto justify-content-center">
-                  <label for="inputItemName" class="col-sm-2 col-form-label">Username</label>
-                  <div class="col-sm-8">
-                      <input type="text" value="<?php echo $data["username"] ?>" class="form-control" id="inputItemName" name="username" placeholder="User name">
-                      <?php if (isset($error["username"])): ?>
-                      <p class="text-danger ">&nbsp <?php echo $error["username"]; ?></p>
-                      <?php endif ?>
-                  </div>
-              </div>
-              <div class="form-group row mr-auto ml-auto justify-content-center">
-                  <label for="inputItemName" class="col-sm-2 col-form-label">Password</label>
-                  <div class="col-sm-8">
-                      <input type="password" class="form-control" id="inputItemName" name="password" placeholder="Password">
-                      <?php if (isset($error["password"])): ?>
-                      <p class="text-danger ">&nbsp <?php echo $error["password"]; ?></p>
-                      <?php endif ?>
-                  </div>
-              </div>
-              <div class="form-group row mr-auto ml-auto justify-content-center">
-                  <label for="inputItemName" class="col-sm-2 col-form-label">Confirm Password</label>
-                  <div class="col-sm-8">
-                      <input type="password" class="form-control" id="inputItemName" name="repassword" placeholder="Confirm Password" required>
-                      <?php if (isset($error["repassword"])): ?>
-                      <p class="text-danger ">&nbsp <?php echo $error["repassword"]; ?></p>
-                      <?php endif ?>
-                  </div>
-              </div>
-              <div class="form-group row mr-auto ml-auto justify-content-center">
-                  <label for="inputItemName" class="col-sm-2 col-form-label">Fullname</label>
-                  <div class="col-sm-8">
-                      <input type="text" value="<?php echo $data["fullname"] ?>" class="form-control" id="inputItemName" name="fullname" placeholder="Fullname">
-                      <?php if (isset($error["fullname"])): ?>
-                      <p class="text-danger ">&nbsp <?php echo $error["fullname"]; ?></p>
-                      <?php endif ?>
-                  </div>
-              </div>
-              <div class="form-group row mr-auto ml-auto justify-content-center">
-                  <label for="inputItemCategory" class="col-sm-2 col-form-label">Class</label>
-                  <div class="col-sm-8">
-                      <select class="form-control" name="departmentId">
-                          <option value="">Please choose a class</option>
-                          <?php foreach ($department as $item):
-                            if ($item["departmentId"]!=1 and $item["departmentId"]!=3 and $item["departmentId"]!=6):?>
-                              <option value="<?php echo $item["departmentId"]; ?>"><?php echo $item["name"]; ?></option>
-                          <?php endif;endforeach; ?>
-                      </select>
-                      <?php if (isset($error["departmentId"])): ?>
-                        <p class="text-danger ">&nbsp <?php echo $error["departmentId"]; ?></p>
-                      <?php endif ?>
-                  </div>
-              </div>
-              <div class="form-group row mr-auto ml-auto justify-content-center">
-                  <label for="inputItemName" class="col-sm-2 col-form-label">Email</label>
-                  <div class="col-sm-8">
-                      <input type="email" value="<?php echo $data["email"] ?>" class="form-control" id="inputItemName" name="email" placeholder="Email-Not required">
-                      <?php if (isset($error["email"])): ?>
-                      <p class="text-danger ">&nbsp <?php echo $error["email"]; ?></p>
-                      <?php endif ?>
-                  </div>
-              </div>
-              <div class="form-group row mr-auto ml-auto justify-content-center">
-                  <label for="inputItemName" class="col-sm-2 col-form-label">Phone number</label>
-                  <div class="col-sm-8">
-                      <input type="tel" value="<?php echo $data["phone"] ?>" class="form-control" id="inputItemName" name="phone" placeholder="Phone number">
-                      <?php if (isset($error["phone"])): ?>
-                      <p class="text-danger ">&nbsp <?php echo $error["phone"]; ?></p>
-                      <?php endif ?>
-                  </div>
-              </div>
-              <div class="form-group row mr-auto ml-auto justify-content-center">
-                  <label for="inputItemName" class="col-sm-2 col-form-label">Address</label>
-                  <div class="col-sm-8">
-                      <input type="text" value="<?php echo $data["address"] ?>" class="form-control" id="inputItemName" name="address" placeholder="Address">
-                      <?php if (isset($error["address"])): ?>
-                      <p class="text-danger ">&nbsp <?php echo $error["address"]; ?></p>
-                      <?php endif ?>
-                  </div>
-              </div>
-              <div class="form-group row mr-auto ml-auto justify-content-center">
-                  <label for="inputItemName" class="col-sm-2 col-form-label">Identity Number</label>
-                  <div class="col-sm-8">
-                      <input type="text" value="<?php echo $data["identityNo"] ?>" class="form-control" id="inputItemName" name="identityNo" placeholder="Identity Number">
-                      <?php if (isset($error["identityNo"])): ?>
-                      <p class="text-danger ">&nbsp <?php echo $error["identityNo"]; ?></p>
-                      <?php endif ?>
-                  </div>
-              </div>
-              <div class="form-group row mr-auto ml-auto">
-                  <label for="inputCategoryDes" class="col-sm-2 col-form-label"></label>
-                  <div class="col-sm-10">
-                      <button type="submit" class="btn btn-primary mr-auto ml-auto d-block"><i class="fas fa-registered fa-sm text-white-50"></i> Register</button>
-                  </div>
-              </div>
-          </form>
-        </div>
-      </div>
-      <div class="">
-        <a class="btn btn-primary mr-auto ml-auto d-inline-block" href="../login">
-          <h3>
-            Login
-            <i class="fa fa-long-arrow-left m-l-5" aria-hidden="true"></i>
-          </h3>
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100 justify-content-center">
+				<form action="" method="POST" class="login100-form validate-form" enctype="multipart/form-data">
+					<!-- Username-form -->
+					<div class="wrap-input100 validate-input">
+						<input class="input100" type="text" value="<?php echo $data["username"] ?>" id="inputItemName" name="username" placeholder="Username">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-user" aria-hidden="true"></i>
+						</span>
+						<?php if (isset($error["username"])): ?>
+						<p class="text-danger ">&nbsp <?php echo $error["username"]; ?></p>
+						<?php endif ?>
+					</div>
 
-        </a>
-      </div>
-    </div>
+					<!-- Password-form -->
+                    <div class="wrap-input100 validate-input">
+						<input class="input100" type="password" id="inputItemName" name="password" placeholder="Password">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-lock" aria-hidden="true"></i>
+						</span>
+						<?php if (isset($error["password"])): ?>
+						<p class="text-danger ">&nbsp <?php echo $error["password"]; ?></p>
+						<?php endif ?>
+                    </div>
+
+					<!-- Confirm Password-form -->
+                    <div class="wrap-input100 validate-input">
+						<input class="input100" type="password" id="inputItemName" name="repassword" placeholder="Confirm Password" required>
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-lock" aria-hidden="true"></i>
+						</span>
+						<?php if (isset($error["repassword"])): ?>
+						<p class="text-danger ">&nbsp <?php echo $error["repassword"]; ?></p>
+						<?php endif ?>
+                    </div>
+
+					<!-- Name-form -->
+					<div class="wrap-input100 validate-input">
+						<input class="input100" type="text" value="<?php echo $data["fullname"] ?>" id="inputItemName" name="fullname" placeholder="Fullname">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-id-badge" aria-hidden="true"></i>
+						</span>
+						<?php if (isset($error["fullname"])): ?>
+						<p class="text-danger ">&nbsp <?php echo $error["fullname"]; ?></p>
+						<?php endif ?>
+					</div>
+
+					<!-- Department-form (Under Construction) -->
+					<div class="wrap-input100 validate-input">
+						<select class="option100 form-control" name="departmentId">
+							<option value="">Please choose a department</option>
+							<span class="focus-input100"></span>
+							<span class="symbol-input100">
+								<i class="fa fa-id-badge" aria-hidden="true"></i>
+							</span>
+							<?php foreach ($department as $item):
+								if ($item["departmentId"]!=1 and $item["departmentId"]!=3 and $item["departmentId"]!=6):?>
+								<option value="<?php echo $item["departmentId"]; ?>"><?php echo $item["name"]; ?></option>
+							<?php endif;endforeach; ?>
+						</select>
+						<?php if (isset($error["departmentId"])): ?>
+							<p class="text-danger ">&nbsp <?php echo $error["departmentId"]; ?></p>
+						<?php endif ?>
+					</div>
+
+					<!-- Email-form -->
+					<div class="wrap-input100 validate-input">
+						<input class="input100" type="email" value="<?php echo $data["email"] ?>"  id="inputItemName" name="email" placeholder="Email-Not required">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-envelope" aria-hidden="true"></i>
+						</span>
+						<?php if (isset($error["email"])): ?>
+						<p class="text-danger ">&nbsp <?php echo $error["email"]; ?></p>
+						<?php endif ?>
+                    </div>
+
+					<!-- Phone-form -->
+					<div class="wrap-input100 validate-input">
+						<input class="input100" type="tel" value="<?php echo $data["phone"] ?>" id="inputItemName" name="phone" placeholder="Phone number">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-phone" aria-hidden="true"></i>
+						</span>
+						<?php if (isset($error["phone"])): ?>
+						<p class="text-danger ">&nbsp <?php echo $error["phone"]; ?></p>
+						<?php endif ?>
+                    </div>
+
+					<!-- Address-form -->
+					<div class="wrap-input100 validate-input">
+						<input class="input100" type="text" value="<?php echo $data["address"] ?>" id="inputItemName" name="address" placeholder="Address">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-map-marker" aria-hidden="true"></i>
+						</span>
+						<?php if (isset($error["address"])): ?>
+						<p class="text-danger ">&nbsp <?php echo $error["address"]; ?></p>
+						<?php endif ?>
+                    </div>
+
+					<!-- Id No.-form -->
+					<div class="wrap-input100 validate-input">
+						<input class="input100" type="text" value="<?php echo $data["identityNo"] ?>" id="inputItemName" name="identityNo" placeholder="Identity Number">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-id-card" aria-hidden="true"></i>
+						</span>
+						<?php if (isset($error["identityNo"])): ?>
+						<p class="text-danger ">&nbsp <?php echo $error["identityNo"]; ?></p>
+						<?php endif ?>
+                    </div>
+
+					<div class="container-login100-form-btn">
+						<button type="submit" class="login100-form-btn">
+							Sign up
+						</button>
+					</div>
+
+					<div class="text-center p-t-12">
+						<span class="txt1">
+							Forgot
+						</span>
+						<a class="txt2" href="#">
+							Username / Password?
+						</a>
+					</div>
+
+					<div class="text-center p-t-136">
+						<a class="txt2" href="../Login/index.php">
+							Return Login
+							<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+						</a>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
     <!-- End of Main Content -->
 
-<?php require_once __dir__. "/footer.php"; ?>
+<?php require_once __dir__. "/layouts/footer.php"; ?>
