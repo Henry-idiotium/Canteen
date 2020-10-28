@@ -93,6 +93,10 @@
     {
         header("location: ".base_url(). "admin/modules/{$url}"); exit();
     }
+    function redirectUser($url)
+    {
+        header("location: ".base_url(). "user/modules/{$url}"); exit();
+    }
 
     //Divide an Array into N chunks
     function array_partition(Array $list, $p) {

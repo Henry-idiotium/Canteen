@@ -13,7 +13,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
         <!-- Custom styles for this template-->
         <link href="<?php echo base_url() ?>public/admin/css/sb-admin-2.scss" rel="stylesheet">
-        <link href="<?php echo base_url() ?>public/admin/css/mycss.css" rel="stylesheet">
+        <link type="text/css" href="<?php echo base_url() ?>public/admin/css/mycss.css" rel="stylesheet">
     </head>
     <body id="page-top">
         <!-- Page Wrapper -->
@@ -112,7 +112,7 @@
 
                                 <!-- Nav Item - Shopping Cart -->
                                 <li class="nav-item dropdown no-arrow mx-1">
-                                    <a class="nav-link dropdown-toggle" href="cart.php" id="messagesDropdown">
+                                    <a class="nav-link dropdown-toggle" href="cart.php?account=<?php echo $account; ?>" id="messagesDropdown">
                                         <i class="fas fa-shopping-cart fa-fw"></i>
                                         <!-- Counter - Messages -->
                                         <span class="badge badge-danger badge-counter">1</span>

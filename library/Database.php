@@ -122,6 +122,11 @@
             return mysqli_affected_rows($this->link);
         }
         //
+        public function dele($table , $sql)
+        {
+            mysqli_query($this->link,$sql) or die ("Wrong query ----" .mysqli_error($this->link));
+            return mysqli_affected_rows($this->link);
+        }
 
 
 
