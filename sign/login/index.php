@@ -31,7 +31,7 @@
 						header("location: ".base_url(). "admin/modules/user?account=".$data['username']); exit();
 					}
 					elseif ($data['roleId']==2){
-						header("location: ".base_url(). "admin/modules/item?account=".$data['username']); exit();
+						header("location: ".base_url(). "caterer/modules/item?account=".$data['username']); exit();
 					}
 					elseif ($data['roleId']==3){
 						header("location: ".base_url(). "user/modules/itemDisplay?account=".$data['username']); exit();

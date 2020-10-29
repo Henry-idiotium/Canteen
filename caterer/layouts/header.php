@@ -30,25 +30,15 @@
                 <!-- Divider -->
                 <hr class="sidebar-divider my-0">
                 <!-- Nav Item - Dashboard -->
-                <li class="nav-item">
-                    <a class="nav-link" href="index.html">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>View statistic</span></a>
-                </li>
                 <li class="nav-item <?php echo isset($open) && $open=="addbalance" ? "active" : "" ?>">
                     <a class="nav-link" href="../addBalance">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Add balance</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="index.html">
+                    <a class="nav-link" href="http://localhost/Canteen/caterer/modules/notification">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Manage order</span></a>
-                </li>
-                <li class="nav-item <?php echo isset($open) && $open=="manageaccount" ? "active" : "" ?>">
-                    <a class="nav-link" href="../user">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Manage account</span></a>
                 </li>
                 <li class="nav-item <?php echo isset($open) && $open=="manageitem" ? "active" : "" ?>">
                     <a class="nav-link" href="../item">

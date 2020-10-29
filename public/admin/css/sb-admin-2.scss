@@ -11627,3 +11627,16 @@ body.sidebar-toggled footer.sticky-footer {
   background-position: center;
   background-size: cover;
 }
+
+.item-func-box {
+  width: 50%;
+}
+
+.item-func {
+  border: 3px solid var(--primary-btn-main);
+  border-radius: 1.5rem;
+  height: 3rem;
+  width: 3rem;
+  background-color: transparent;
+  color: white;
+}

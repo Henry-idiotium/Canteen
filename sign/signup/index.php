@@ -81,7 +81,7 @@
             $idInsert=$db->insert("tbluser", $data);
             if (isset($idInsert)) {
                 $_SESSION["success"]="Add successfully";
-                redirectCate("user".$show);
+				redirectUser("itemDisplay?account=".$account);
             }
             else $_SESSION["error"]="Add failed";
         }

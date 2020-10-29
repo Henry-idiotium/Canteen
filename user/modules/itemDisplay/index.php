@@ -31,7 +31,13 @@
         $asd=3;
     }
 
-    $sql="SELECT tblitem.*, tblcategory.name as namecate, tblstatus.name as namestatus FROM tblitem LEFT JOIN tblcategory on tblitem.categoryId=tblcategory.categoryId LEFT JOIN tblstatus on tblitem.statusId=tblstatus.statusId WHERE ".$cate." AND tblitem.statusId=$statusid"." ".$orderby;
+    $sql="  SELECT tblitem.*
+                , tblcategory.name as namecate
+                , tblstatus.name as namestatus 
+            FROM tblitem 
+                LEFT JOIN tblcategory on tblitem.categoryId=tblcategory.categoryId 
+                LEFT JOIN tblstatus on tblitem.statusId=tblstatus.statusId 
+            WHERE ".$cate." AND tblitem.statusId=$statusid"." ".$orderby;
 
     $product=$db->fetchJone("tblitem", $sql, 0, 0, false, "itemId", "WHERE ".$cate." AND tblitem.statusId=$statusid");
 
@@ -88,7 +94,7 @@
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <?php foreach ($category as $item): ?>
-                            <a class="dropdown-item" href="index.php?cate=<?php echo $item["categoryId"] ?>&orderby=<?php echo $orderby; ?>&asd=<?php echo $asd; ?>&status=<?php echo $statusid ?>"><?php echo $item["name"]; ?></a>
+                            <a class="dropdown-item" href="index.php?cate=<?php echo $item["categoryId"] ?>&orderby=<?php echo $orderby; ?>&asd=<?php echo $asd; ?>&status=<?php echo $statusid ?>&account=<?php echo $account; ?>"><?php echo $item["name"]; ?></a>
                         <?php endforeach ?>
                     </div>
                   </div>
@@ -102,7 +108,7 @@
                             <div class="item-overlay d-flex text-center justify-content-center">
                                 <div class="d-inline-block my-auto align-self-center">
                                     <h3><?php echo $item['name']; ?></h3>
-                                    <a href="itemDisplay.php?itemId=<?php echo $item['itemId'] ?>">
+                                    <a href="itemDisplay.php?itemId=<?php echo $item['itemId'] ?>&account=<?php echo $account; ?>">
                                         <button class="item-func item-view fas fa-eye"></button>
                                     </a>
                                     <a href="addCart.php?itemadd=<?php echo $item['itemId']; ?>&account=<?php echo $account; ?>">
@@ -119,17 +125,6 @@
 
             <div class="card shadow mb-4 col-xl-5 col-lg-4 col-12">
                 <div class="card-header py-3">
-                    <h4 class="m-0 font-weight-bold text-primary">Notifications</h4>
-                </div>
-                <div class="card-body row align-self-center">
-                  <?php if (isset($_SESSION["notification"])):  ?>
-                    <div class="alert alert-danger" role="alert">
-                      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                      <?php echo $_SESSION["notification"]; unset($_SESSION["notification"]); ?>
-                    </div>
-                  <?php endif; ?>
-                </div>
-                <div class="card-header py-3">
                     <h4 class="m-0 font-weight-bold text-primary">Recommendations</h4>
                 </div>
                 <div class="card-body row align-self-center">
@@ -139,9 +134,9 @@
                         <article class="d-item mb-5 mt-2">
                             <img src="<?php echo uploads().$item['image']; ?>" width="100%">
                             <div class="item-overlay d-flex text-center justify-content-center">
-                                <div class="d-inline-block my-auto align-self-center">
+                                <div class="d-inline-block my-auto align-self-center item-func-box">
                                     <h3 class=""><?php echo $item['name']; ?></h3>
-                                    <a href="itemDisplay.php?itemId=<?php echo $item['itemId'] ?>">
+                                    <a href="itemDisplay.php?itemId=<?php echo $item['itemId'] ?>&account=<?php echo $account; ?>">
                                         <button class="item-func item-view fas fa-eye"></button>
                                     </a>
                                     <a href="addCart.php?itemadd=<?php echo $item['itemId']; ?>&account=<?php echo $account; ?>">

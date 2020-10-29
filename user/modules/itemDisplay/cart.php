@@ -8,14 +8,14 @@
                 ,tblitem.name as nameitem
                 ,tblitem.price as priceitem
                 ,tblitem.image as img
-                ,tblorder.orderId as id 
+                ,tblorder.orderId as id
                 ,tblcart.quantity as qty 
                 ,tblcategory.name as catename
             FROM tblcart
                 LEFT JOIN tblitem on tblcart.itemId=tblitem.itemId
                 LEFT JOIN tblorder on tblorder.orderId=tblcart.orderId
                 LEFT JOIN tblcategory on tblitem.categoryId=tblcategory.categoryId
-            WHERE tblorder.statusId=11 AND tblorder.username="."'".$account."'"." ORDER BY tblorder.createAt DESC ";
+            WHERE tblorder.statusId=1 AND tblorder.username="."'".$account."'"." ORDER BY tblorder.createAt DESC ";
     $cart=$db->fetchJone("tblcart", $sql, 0, 10, false, "username","WHERE tblorder.statusId=1 AND tbluser.username="."'".$account."'");
 
     $totalcart=0;
@@ -54,7 +54,9 @@
                                             <div class="item-img-cart-box">
                                                 <div class="item-img-cart" style="background-image: url('<?php echo uploads().$item['img']; ?>');">
                                                 </div>
-                                                <i class="fas fa-times"></i>
+                                                <a rel="stylesheet" href="deletecart.php?id=<?php echo $item["id"]; ?>&account=<?php echo $account; ?>&itemadd=<?php echo $item["itemId"]; ?>">
+                                                    <i class="fas fa-times"></i>
+                                                </a>
                                             </div>
                                             <?php echo $item["nameitem"] ?>
                                             <br>
@@ -97,9 +99,15 @@
                                 Shipping & taxes calculated at purchase
                             </p>
                             <div class="container-login100-form-btn">
-                                <button type="submit" class="login100-form-btn">
-                                    Purchase<span></span><i class="fas fa-money-bill-alt"></i>
-                                </button>
+                                <?php foreach ($cart as $key){
+                                    $cartt=$key["id"];
+                                    break;
+                                }?>
+                                <a href="buy.php?account=<?php echo $account; ?>&order=<?php echo $cartt; ?>">
+                                    <button type="submit" class="login100-form-btn">
+                                        Purchase<span></span><i class="fas fa-money-bill-alt"></i>
+                                    </button>
+                                </a>
                             </div>
                         </div>
                     </div>

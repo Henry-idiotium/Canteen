@@ -14,5 +14,4 @@
       redirectUser("item?account=".$account);
     }
 
-
 ?>
