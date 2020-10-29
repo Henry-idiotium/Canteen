@@ -11398,3 +11398,232 @@ body.sidebar-toggled footer.sticky-footer {
 .quantity.buttons_added .plus:focus {
   outline: none;
 }
+
+.cus-tbl-1 th {
+  text-transform: uppercase;
+  font-size: 1rem;
+  letter-spacing: 2px;
+  width: 10rem;
+}
+
+.td-cus {
+  color: #111111;
+  font-size: 1.3rem;
+  letter-spacing: 2px;
+  vertical-align: middle;
+  line-height: 250px;
+}
+
+.td-cus-name {
+  text-transform: capitalize;
+  color: #111111;
+  font-size: 1.3rem;
+}
+
+.td-cus-name span {
+  color: #858796;
+  font-size: 1rem;
+}
+
+.item-img-cart {
+  width: 230px;
+  height: 230px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.item-img-cart-box {
+  display: flex;  
+  margin-top: 2.5rem;
+  margin-bottom: 2rem;
+}
+
+.item-img-cart-box i {
+  font-size: 3rem;
+  padding: 0 1.2rem;
+  color: #3b3f44;
+  background-color: #ebe9e9;
+  vertical-align: middle;
+  line-height: 230px;
+  transition: .1s ease-in-out;
+  cursor: pointer;
+}
+
+.item-img-cart-box i:hover {
+  background-color: #d6d6d6;
+}
+
+.item-img-cart-box i:active {
+  background-color: #b9b9b9;
+}
+
+.wrap-input100 {
+  position: relative;
+  width: 100%;
+  z-index: 1;
+  margin-bottom: 10px;
+}
+
+.validate-input {
+  position: relative;
+}
+
+.input100 {
+  font-family: Poppins-Medium;
+  font-size: 1.2rem;
+  line-height: 1.5;
+  color: #666666;
+
+  display: block;
+  width: 50% !important;
+  background: #e6e6e6;
+  height: 70px;
+  border-radius: 35px;
+  padding: 0 30px 0 68px;
+}
+
+.focus-input100 {
+  display: block;
+  position: absolute;
+  border-radius: 25px;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  box-shadow: 0px 0px 0px 0px;
+  color: rgba(87,184,70, 0.8);
+}
+
+.symbol-input100 {
+  font-size: 15px;
+
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  align-items: center;
+  position: absolute;
+  border-radius: 25px;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding-left: 35px;
+  pointer-events: none;
+  color: #666666;
+
+  -webkit-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  transition: all 0.4s;
+}
+
+.input100:focus + .focus-input100 {
+  -webkit-animation: anim-shadow 0.5s ease-in-out forwards;
+  animation: anim-shadow 0.5s ease-in-out forwards;
+}
+
+.input100:focus + .focus-input100 + .symbol-input100 {
+  color: #57b846;
+  padding-left: 28px;
+}
+
+#addanote {
+  display: block;
+  text-transform: uppercase;
+  color: #858796;
+  font-size: 1rem;
+  padding-top: 4rem;
+  padding-bottom: 2rem;
+}
+
+.side-tab-box hr {
+  border-top: .4rem solid #111111;
+  width: 75%;
+  margin-bottom: 7rem;
+  margin-left: 0rem;
+}
+
+.side-tab {
+  width: 75%;
+  padding-left: 2.4rem;
+}
+
+.side-tab hr {
+  border-top: .4rem solid #111111;
+}
+
+.side-tab h4 {
+  display: inline;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #111111;
+  font-weight: bold;
+}
+
+.side-tab span {
+  text-transform: uppercase;
+  font-size: 1rem;
+  font-weight: bold;
+  margin-right: 1rem;
+}
+
+.side-tab p {
+  margin-top: 1.3rem;
+}
+
+.container-login100-form-btn {
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: right;
+  padding-top: 20px;
+  margin-top: 10rem;
+}
+
+.login100-form-btn {
+  font-size: 15px;
+  line-height: 1.5;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 2px;
+  border: none;
+
+  width: 13rem;
+  height: 4rem;
+  border-radius: 2rem;
+  background: var(--primary-btn-main);
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 25px;
+
+  -webkit-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  transition: all 0.4s;
+}
+
+.login100-form-btn:hover {
+  background: #333333;
+}
+
+.item-img-cart-small {
+  width: 4rem;
+  height: 4rem;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
