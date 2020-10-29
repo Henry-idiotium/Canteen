@@ -122,7 +122,12 @@
                     <h4 class="m-0 font-weight-bold text-primary">Notifications</h4>
                 </div>
                 <div class="card-body row align-self-center">
-                    future content
+                  <?php if (isset($_SESSION["notification"])):  ?>
+                    <div class="alert alert-danger" role="alert">
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                      <?php echo $_SESSION["notification"]; unset($_SESSION["notification"]); ?>
+                    </div>
+                  <?php endif; ?>
                 </div>
                 <div class="card-header py-3">
                     <h4 class="m-0 font-weight-bold text-primary">Recommendations</h4>

@@ -8,7 +8,7 @@
     if (isset($orderstatus)) {
       $data =["orderId"=>$orderstatus["orderId"], "itemId"=>$itemadd];
       $cartInsert=$db->insert("tblcart", $data);
-      redirectUser("itemDisplay?account=".$account);
+      redirectUser("item?account=".$account);
     }
     else {
       $data =["username"=>$account, "statusId"=>1];
@@ -17,7 +17,7 @@
       $orderstatuss=$db->fetchOne("tblorder", "statusId=1 AND username="."'".$account."'"." ");
       $dataa =["orderId"=>$orderstatuss["orderId"], "itemId"=>$itemadd];
       $cartInsert=$db->insert("tblcart", $dataa);
-      redirectUser("itemDisplay?account=".$account);
+      redirectUser("item?account=".$account);
     }
 
 

@@ -97,6 +97,10 @@
     {
         header("location: ".base_url(). "user/modules/{$url}"); exit();
     }
+    function redirectcaterer($url)
+    {
+        header("location: ".base_url(). "caterer/modules/{$url}"); exit();
+    }
 
     //Divide an Array into N chunks
     function array_partition(Array $list, $p) {
